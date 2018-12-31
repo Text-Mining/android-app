@@ -46,6 +46,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -67,6 +68,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -81,6 +83,7 @@
                 android:layout_height="@dimen/spacing_mlarge" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/sign_in_button"
                 style="@style/TextAppearance.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
