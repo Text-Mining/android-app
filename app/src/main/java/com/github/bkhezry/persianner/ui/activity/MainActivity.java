@@ -1,8 +1,10 @@
-package com.github.bkhezry.persianner;
+package com.github.bkhezry.persianner.ui.activity;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.github.bkhezry.persianner.R;
 
 public class MainActivity extends AppCompatActivity {
 
