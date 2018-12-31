@@ -3,14 +3,21 @@ package com.github.bkhezry.persianner.ui.activity;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.bkhezry.persianner.R;
+import com.github.bkhezry.persianner.model.AuthInfo;
+import com.github.bkhezry.persianner.service.APIService;
+import com.github.bkhezry.persianner.util.RetrofitUtil;
 import com.google.android.material.textfield.TextInputEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -39,7 +46,27 @@ public class LauncherActivity extends AppCompatActivity {
   }
 
   private void signIn() {
+    String email = usernameEditText.getText().toString();
+    String password = passwordEditText.getText().toString();
+    if (!email.equals("") && !password.equals("")) {
+      APIService apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
+      Call<AuthInfo> call = apiService.signIn(email, password);
+      call.enqueue(new Callback<AuthInfo>() {
+        @Override
+        public void onResponse(@NonNull Call<AuthInfo> call, @NonNull Response<AuthInfo> response) {
+          if (response.isSuccessful()) {
+            AuthInfo authInfo = response.body();
+          } else {
 
+          }
+        }
+
+        @Override
+        public void onFailure(@NonNull Call<AuthInfo> call, @NonNull Throwable t) {
+          t.printStackTrace();
+        }
+      });
+    }
   }
 
   private void signUp() {
