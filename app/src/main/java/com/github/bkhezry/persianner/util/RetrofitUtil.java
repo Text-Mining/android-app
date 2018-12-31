@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtil {
 
   public static Retrofit getRetrofit(String token) {
-    return new Retrofit.Builder().baseUrl(BASE_URL)
+    return new Retrofit.Builder().baseUrl(Constant.BASE_URL)
         .client(getHeader(token))
         .addConverterFactory(GsonConverterFactory.create())
         .build();
