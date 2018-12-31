@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 public interface APIService {
 
-  @POST("token")
+  @POST("auth/login")
   @FormUrlEncoded
   Call<AuthInfo> signIn(
       @Field("Email") String email,
