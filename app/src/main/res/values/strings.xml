@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PersianNER</string>
+    <string name="sign_in_label">Sign In</string>
+    <string name="username_label">Username</string>
+    <string name="password_label">Password</string>
+    <string name="new_user_label">New user?</string>
+    <string name="sign_up_label">Sign Up</string>
 </resources>
