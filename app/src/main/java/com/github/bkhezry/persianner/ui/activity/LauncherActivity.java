@@ -2,7 +2,6 @@ package com.github.bkhezry.persianner.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import com.github.bkhezry.persianner.model.AuthInfo;
 import com.github.bkhezry.persianner.service.APIService;
 import com.github.bkhezry.persianner.util.RetrofitUtil;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.gson.JsonObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,25 +49,22 @@ public class LauncherActivity extends AppCompatActivity {
     String email = usernameEditText.getText().toString();
     String password = passwordEditText.getText().toString();
     if (!email.equals("") && !password.equals("")) {
-      JsonObject signInData = new JsonObject();
-      signInData.addProperty("Email", email);
-      signInData.addProperty("Password", password);
+
       APIService apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
-      Call<AuthInfo> call = apiService.signIn(signInData);
+      Call<AuthInfo> call = apiService.signIn(email, password);
       call.enqueue(new Callback<AuthInfo>() {
         @Override
         public void onResponse(@NonNull Call<AuthInfo> call, @NonNull Response<AuthInfo> response) {
           if (response.isSuccessful()) {
             AuthInfo authInfo = response.body();
-            Toast.makeText(LauncherActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
           } else {
-            Toast.makeText(LauncherActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+
           }
         }
 
         @Override
         public void onFailure(@NonNull Call<AuthInfo> call, @NonNull Throwable t) {
-          Toast.makeText(LauncherActivity.this, "onFailure", Toast.LENGTH_SHORT).show();
           t.printStackTrace();
         }
       });
