@@ -37,7 +37,8 @@ public class RetrofitUtil {
                   Request original = chain.request();
                   // Request customization: add request headers
                   Request.Builder requestBuilder = original.newBuilder()
-                      .addHeader("Authorization", authorizationValue);
+                      .addHeader("Authorization", "Bearer " + authorizationValue)
+                      .addHeader("Content-Type", "application/x-www-form-urlencoded");
 
                   request = requestBuilder.build();
                 }
