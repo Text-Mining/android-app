@@ -49,7 +49,6 @@ public class LauncherActivity extends AppCompatActivity {
     String email = usernameEditText.getText().toString();
     String password = passwordEditText.getText().toString();
     if (!email.equals("") && !password.equals("")) {
-
       APIService apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
       Call<AuthInfo> call = apiService.signIn(email, password);
       call.enqueue(new Callback<AuthInfo>() {
