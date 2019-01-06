@@ -54,7 +54,7 @@ public class LauncherActivity extends AppCompatActivity {
       @Override
       public void onResponse(@NonNull Call<TagInfo> call, @NonNull Response<TagInfo> response) {
         if (response.isSuccessful()) {
-
+          storeTags(response.body());
         }
       }
 
@@ -64,6 +64,10 @@ public class LauncherActivity extends AppCompatActivity {
 
       }
     });
+  }
+
+  private void storeTags(TagInfo tagInfo) {
+    prefser.put(Constant.TAG_INFO, tagInfo);
   }
 
   private void checkAuthInfo() {
