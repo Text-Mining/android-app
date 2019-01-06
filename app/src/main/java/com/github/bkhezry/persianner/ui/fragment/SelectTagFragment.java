@@ -16,9 +16,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.bkhezry.persianner.R;
+import com.github.bkhezry.persianner.model.AuthInfo;
 import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.WordsItem;
+import com.github.bkhezry.persianner.service.APIService;
+import com.github.bkhezry.persianner.util.Constant;
 import com.github.bkhezry.persianner.util.MyApplication;
+import com.github.bkhezry.persianner.util.RetrofitUtil;
+import com.github.pwittchen.prefser.library.rx2.Prefser;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
@@ -43,6 +48,8 @@ public class SelectTagFragment extends DialogFragment {
   private Box<NerStandardTagsItem> tagsItemBox;
   private FastAdapter<NerStandardTagsItem> mFastAdapter;
   private ItemAdapter<NerStandardTagsItem> mItemAdapter;
+  private Prefser prefser;
+  private AuthInfo authInfo;
 
 
   @Override
@@ -53,6 +60,8 @@ public class SelectTagFragment extends DialogFragment {
     ButterKnife.bind(this, view);
     BoxStore boxStore = MyApplication.getBoxStore();
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
+    prefser = new Prefser(getActivity());
+    authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -71,7 +80,7 @@ public class SelectTagFragment extends DialogFragment {
   }
 
   private void submitTag(NerStandardTagsItem item) {
-
+    APIService apiService = RetrofitUtil.getRetrofit(authInfo.getToken()).create(APIService.class);
   }
 
   private void handleTagItems() {

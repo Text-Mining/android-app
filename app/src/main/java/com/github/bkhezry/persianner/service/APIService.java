@@ -1,6 +1,7 @@
 package com.github.bkhezry.persianner.service;
 
 import com.github.bkhezry.persianner.model.AuthInfo;
+import com.github.bkhezry.persianner.model.ResponseMessage;
 import com.github.bkhezry.persianner.model.Sentence;
 import com.github.bkhezry.persianner.model.TagInfo;
 
@@ -27,7 +28,7 @@ public interface APIService {
 
   @POST("/ner/tagword")
   @FormUrlEncoded
-  Call<AuthInfo> tagWord(@Field("SentenceId") String sentenceId,
-                         @Field("WordId") String password,
-                         @Field("UserTag") String userTag);
+  Call<ResponseMessage> tagWord(@Field("SentenceId") String sentenceId,
+                                @Field("WordId") String password,
+                                @Field("UserTag") String userTag);
 }
