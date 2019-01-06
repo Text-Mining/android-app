@@ -13,7 +13,7 @@ import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.Sentence;
 import com.github.bkhezry.persianner.model.WordsItem;
 import com.github.bkhezry.persianner.service.APIService;
-import com.github.bkhezry.persianner.ui.fragment.AddTagFragment;
+import com.github.bkhezry.persianner.ui.fragment.SelectTagFragment;
 import com.github.bkhezry.persianner.util.AppUtil;
 import com.github.bkhezry.persianner.util.Constant;
 import com.github.bkhezry.persianner.util.MyApplication;
@@ -100,7 +100,7 @@ public class MainActivity extends BaseActivity {
   }
 
   private void selectTagFragment(WordsItem wordsItem) {
-    AddTagFragment fragment = new AddTagFragment();
+    SelectTagFragment fragment = new SelectTagFragment();
     fragment.setWordItem(wordsItem);
     AppUtil.showFragment(fragment, getSupportFragmentManager());
   }

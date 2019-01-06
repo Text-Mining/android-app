@@ -16,13 +16,13 @@ import com.github.bkhezry.persianner.model.WordsItem;
 
 import butterknife.ButterKnife;
 
-public class AddTagFragment extends DialogFragment {
+public class SelectTagFragment extends DialogFragment {
   private WordsItem item;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.fragment_add_tag,
+    View view = inflater.inflate(R.layout.fragment_select_tag,
         container, false);
     ButterKnife.bind(this, view);
     return view;
