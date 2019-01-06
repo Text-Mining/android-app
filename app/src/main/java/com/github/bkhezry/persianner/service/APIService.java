@@ -2,6 +2,7 @@ package com.github.bkhezry.persianner.service;
 
 import com.github.bkhezry.persianner.model.AuthInfo;
 import com.github.bkhezry.persianner.model.Sentence;
+import com.github.bkhezry.persianner.model.TagInfo;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -18,4 +19,8 @@ public interface APIService {
 
   @GET("ner/GetRandomSentence")
   Call<Sentence> randomSentence();
+
+
+  @GET("ner/standardtags")
+  Call<TagInfo> tags();
 }
