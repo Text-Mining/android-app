@@ -39,6 +39,7 @@ public class SelectTagFragment extends DialogFragment {
   @BindView(R.id.recyclerView)
   RecyclerView recyclerView;
   private WordsItem item;
+  private String sentenceId;
   private Box<NerStandardTagsItem> tagsItemBox;
   private FastAdapter<NerStandardTagsItem> mFastAdapter;
   private ItemAdapter<NerStandardTagsItem> mItemAdapter;
@@ -89,7 +90,8 @@ public class SelectTagFragment extends DialogFragment {
   }
 
 
-  public void setWordItem(WordsItem wordsItem) {
+  public void setWordData(WordsItem wordsItem, String sentenceId) {
     this.item = wordsItem;
+    this.sentenceId = sentenceId;
   }
 }

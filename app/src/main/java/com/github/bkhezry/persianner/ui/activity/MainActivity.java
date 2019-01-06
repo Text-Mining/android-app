@@ -77,12 +77,12 @@ public class MainActivity extends BaseActivity {
   private void handleSentence(Sentence sentence) {
     chipGroup.removeAllViews();
     for (WordsItem wordsItem : sentence.getWords()) {
-      Chip chip = generateClip(wordsItem);
+      Chip chip = generateClip(wordsItem, sentence.getSentenceId());
       chipGroup.addView(chip);
     }
   }
 
-  private Chip generateClip(WordsItem wordsItem) {
+  private Chip generateClip(WordsItem wordsItem, String sentenceId) {
     Chip chip =
         (Chip) getLayoutInflater().inflate(R.layout.item_chip, chipGroup, false);
     chip.setText(wordsItem.getWord());
@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity {
     chip.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        selectTagFragment(wordsItem);
+        selectTagFragment(wordsItem, sentenceId);
       }
     });
     if (!wordsItem.getTag().equals("O")) {
@@ -99,9 +99,9 @@ public class MainActivity extends BaseActivity {
     return chip;
   }
 
-  private void selectTagFragment(WordsItem wordsItem) {
+  private void selectTagFragment(WordsItem wordsItem, String sentenceId) {
     SelectTagFragment fragment = new SelectTagFragment();
-    fragment.setWordItem(wordsItem);
+    fragment.setWordData(wordsItem, sentenceId);
     AppUtil.showFragment(fragment, getSupportFragmentManager());
   }
 
