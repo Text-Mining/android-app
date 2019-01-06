@@ -36,7 +36,6 @@ public class MainActivity extends BaseActivity {
 
   @BindView(R.id.chip_group)
   ChipGroup chipGroup;
-  private Prefser prefser;
   private AuthInfo authInfo;
   private Box<NerStandardTagsItem> tagsItemBox;
 
@@ -50,7 +49,7 @@ public class MainActivity extends BaseActivity {
   }
 
   private void initVariables() {
-    prefser = new Prefser(this);
+    Prefser prefser = new Prefser(this);
     authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
     BoxStore boxStore = MyApplication.getBoxStore();
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);

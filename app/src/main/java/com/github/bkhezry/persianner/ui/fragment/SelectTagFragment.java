@@ -55,7 +55,6 @@ public class SelectTagFragment extends DialogFragment {
   private Box<NerStandardTagsItem> tagsItemBox;
   private FastAdapter<NerStandardTagsItem> mFastAdapter;
   private ItemAdapter<NerStandardTagsItem> mItemAdapter;
-  private Prefser prefser;
   private AuthInfo authInfo;
   private SelectTagEventListener listener;
   private Dialog loadingDialog;
@@ -69,7 +68,7 @@ public class SelectTagFragment extends DialogFragment {
     ButterKnife.bind(this, view);
     BoxStore boxStore = MyApplication.getBoxStore();
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
-    prefser = new Prefser(getActivity());
+    Prefser prefser = new Prefser(getActivity());
     authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
     loadingDialog = AppUtil.getLoadingDialog(getActivity());
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
