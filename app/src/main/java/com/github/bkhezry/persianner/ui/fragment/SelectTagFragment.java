@@ -1,5 +1,6 @@
 package com.github.bkhezry.persianner.ui.fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -58,6 +59,7 @@ public class SelectTagFragment extends DialogFragment {
   private AuthInfo authInfo;
   private SelectTagEventListener listener;
   private Dialog loadingDialog;
+  private Activity activity;
 
 
   @Override
@@ -73,11 +75,12 @@ public class SelectTagFragment extends DialogFragment {
   }
 
   private void initVariables() {
+    activity = getActivity();
     BoxStore boxStore = MyApplication.getBoxStore();
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
-    Prefser prefser = new Prefser(getActivity());
+    Prefser prefser = new Prefser(activity);
     authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
-    loadingDialog = AppUtil.getLoadingDialog(getActivity());
+    loadingDialog = AppUtil.getLoadingDialog(activity);
   }
 
   private void setUpRecyclerView() {
