@@ -58,7 +58,11 @@ public class MainActivity extends BaseActivity {
       public void onResponse(@NonNull Call<Sentence> call, @NonNull Response<Sentence> response) {
         if (response.isSuccessful()) {
           Sentence sentence = response.body();
-          handleSentence(sentence);
+          if (sentence.getWords().size() == 0) {
+            getSentence();
+          } else {
+            handleSentence(sentence);
+          }
         }
       }
 
