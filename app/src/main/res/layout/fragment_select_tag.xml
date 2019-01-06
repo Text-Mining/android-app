@@ -43,6 +43,7 @@
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/close_button"
                     android:layout_width="?attr/actionBarSize"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/selectableItemBackgroundBorderless"

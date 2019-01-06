@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import retrofit2.Call;
@@ -99,6 +100,7 @@ public class SelectTagFragment extends DialogFragment {
         if (response.isSuccessful()) {
           if (listener != null) {
             listener.tagSuccess(item.getTitle());
+            close();
           }
         }
       }
@@ -139,5 +141,13 @@ public class SelectTagFragment extends DialogFragment {
 
   public void setListener(SelectTagEventListener selectTagEventListener) {
     this.listener = selectTagEventListener;
+  }
+
+  @OnClick(R.id.close_button)
+  public void close() {
+    dismiss();
+    if (getFragmentManager() != null) {
+      getFragmentManager().popBackStack();
+    }
   }
 }
