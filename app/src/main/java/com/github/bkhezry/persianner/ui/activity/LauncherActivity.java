@@ -69,11 +69,13 @@ public class LauncherActivity extends AppCompatActivity {
     String email = usernameEditText.getText().toString();
     String password = passwordEditText.getText().toString();
     if (!email.equals("") && !password.equals("")) {
+      loadingDialog.show();
       APIService apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
       Call<AuthInfo> call = apiService.signIn(email, password);
       call.enqueue(new Callback<AuthInfo>() {
         @Override
         public void onResponse(@NonNull Call<AuthInfo> call, @NonNull Response<AuthInfo> response) {
+          loadingDialog.dismiss();
           if (response.isSuccessful()) {
             AuthInfo authInfo = response.body();
             authInfo.setEmail(email);
@@ -86,6 +88,7 @@ public class LauncherActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(@NonNull Call<AuthInfo> call, @NonNull Throwable t) {
+          loadingDialog.dismiss();
           t.printStackTrace();
         }
       });
