@@ -9,6 +9,8 @@ public class AuthInfo {
 
   private String email;
 
+  private Long storeTimestamp;
+
   public String getToken() {
     return token;
   }
@@ -23,5 +25,13 @@ public class AuthInfo {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public Long getStoreTimestamp() {
+    return storeTimestamp;
+  }
+
+  public void setStoreTimestamp(Long storeTimestamp) {
+    this.storeTimestamp = storeTimestamp;
   }
 }
