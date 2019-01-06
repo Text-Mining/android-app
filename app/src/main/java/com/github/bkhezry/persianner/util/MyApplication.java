@@ -2,6 +2,8 @@ package com.github.bkhezry.persianner.util;
 
 import android.app.Application;
 
+import com.github.bkhezry.persianner.model.MyObjectBox;
+
 import io.objectbox.BoxStore;
 import io.objectbox.android.AndroidObjectBrowser;
 import io.objectbox.android.BuildConfig;
