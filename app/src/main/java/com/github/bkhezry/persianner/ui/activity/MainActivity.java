@@ -23,6 +23,7 @@ import com.google.android.material.chip.ChipGroup;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import retrofit2.Call;
@@ -69,6 +70,7 @@ public class MainActivity extends BaseActivity {
   }
 
   private void handleSentence(Sentence sentence) {
+    chipGroup.removeAllViews();
     for (WordsItem wordsItem : sentence.getWords()) {
       Chip chip = generateClip(wordsItem);
       chipGroup.addView(chip);
@@ -90,5 +92,10 @@ public class MainActivity extends BaseActivity {
       chip.setTextColor(Color.WHITE);
     }
     return chip;
+  }
+
+  @OnClick(R.id.next_sentence_button)
+  public void nextSentence() {
+    getSentence();
   }
 }
