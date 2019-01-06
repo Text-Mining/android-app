@@ -45,11 +45,15 @@ public class MainActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
+    initVariables();
+    getSentence();
+  }
+
+  private void initVariables() {
     prefser = new Prefser(this);
     authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
     BoxStore boxStore = MyApplication.getBoxStore();
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
-    getSentence();
   }
 
   private void getSentence() {
