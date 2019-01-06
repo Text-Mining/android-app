@@ -5,6 +5,7 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:layoutDirection="locale"
     app:cardCornerRadius="6dp"
     app:cardElevation="4dp">
 

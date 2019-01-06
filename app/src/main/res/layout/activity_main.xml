@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layoutDirection="locale"
     android:padding="@dimen/spacing_large"
     tools:context=".ui.activity.MainActivity">
 
