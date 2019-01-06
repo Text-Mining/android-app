@@ -1,5 +1,6 @@
 package com.github.bkhezry.persianner.ui.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class LauncherActivity extends AppCompatActivity {
   @BindView(R.id.password_edit_text)
   TextInputEditText passwordEditText;
   private Prefser prefser;
+  private Dialog loadingDialog;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class LauncherActivity extends AppCompatActivity {
     setContentView(R.layout.activity_launcher);
     ButterKnife.bind(this);
     prefser = new Prefser(this);
+    loadingDialog = AppUtil.getLoadingDialog(this);
     checkAuthInfo();
   }
 
