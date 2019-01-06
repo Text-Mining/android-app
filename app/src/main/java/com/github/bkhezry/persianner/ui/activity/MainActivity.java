@@ -13,6 +13,7 @@ import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.Sentence;
 import com.github.bkhezry.persianner.model.WordsItem;
 import com.github.bkhezry.persianner.service.APIService;
+import com.github.bkhezry.persianner.ui.fragment.AddTagFragment;
 import com.github.bkhezry.persianner.util.AppUtil;
 import com.github.bkhezry.persianner.util.Constant;
 import com.github.bkhezry.persianner.util.MyApplication;
@@ -89,13 +90,19 @@ public class MainActivity extends BaseActivity {
     chip.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-
+        selectTagFragment(wordsItem);
       }
     });
     if (!wordsItem.getTag().equals("O")) {
       chip.setTextColor(Color.WHITE);
     }
     return chip;
+  }
+
+  private void selectTagFragment(WordsItem wordsItem) {
+    AddTagFragment fragment = new AddTagFragment();
+    fragment.setWordItem(wordsItem);
+    AppUtil.showFragment(fragment, getSupportFragmentManager());
   }
 
   @OnClick(R.id.next_sentence_button)
