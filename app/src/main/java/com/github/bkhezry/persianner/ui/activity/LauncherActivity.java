@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.model.AuthInfo;
 import com.github.bkhezry.persianner.service.APIService;
+import com.github.bkhezry.persianner.util.AppUtil;
 import com.github.bkhezry.persianner.util.Constant;
 import com.github.bkhezry.persianner.util.RetrofitUtil;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
@@ -42,7 +43,10 @@ public class LauncherActivity extends AppCompatActivity {
 
   private void checkAuthInfo() {
     if (prefser.contains(Constant.AUTH_INFO)) {
-      startMainActivity();
+      AuthInfo authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
+      if (!AppUtil.isTokenExpire(authInfo.getStoreTimestamp())) {
+        startMainActivity();
+      }
     }
   }
 
