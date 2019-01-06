@@ -33,6 +33,7 @@ public class LauncherActivity extends AppCompatActivity {
   TextInputEditText passwordEditText;
   private Prefser prefser;
   private Dialog loadingDialog;
+  private APIService apiService;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,13 @@ public class LauncherActivity extends AppCompatActivity {
     ButterKnife.bind(this);
     prefser = new Prefser(this);
     loadingDialog = AppUtil.getLoadingDialog(this);
+    apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
     checkAuthInfo();
+    getTags();
+  }
+
+  private void getTags() {
+
   }
 
   private void checkAuthInfo() {
@@ -70,7 +77,6 @@ public class LauncherActivity extends AppCompatActivity {
     String password = passwordEditText.getText().toString();
     if (!email.equals("") && !password.equals("")) {
       loadingDialog.show();
-      APIService apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
       Call<AuthInfo> call = apiService.signIn(email, password);
       call.enqueue(new Callback<AuthInfo>() {
         @Override
