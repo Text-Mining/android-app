@@ -7,12 +7,16 @@
     android:padding="@dimen/spacing_large"
     tools:context=".ui.activity.MainActivity">
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
 
-    </com.google.android.material.chip.ChipGroup>
-
+        </com.google.android.material.chip.ChipGroup>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
