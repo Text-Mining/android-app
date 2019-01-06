@@ -45,13 +45,17 @@ public class LauncherActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_launcher);
     ButterKnife.bind(this);
+    initVariables();
+    checkAuthInfo();
+    getTags();
+  }
+
+  private void initVariables() {
     prefser = new Prefser(this);
     loadingDialog = AppUtil.getLoadingDialog(this);
     apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
     BoxStore boxStore = MyApplication.getBoxStore();
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
-    checkAuthInfo();
-    getTags();
   }
 
   private void getTags() {
@@ -60,7 +64,10 @@ public class LauncherActivity extends BaseActivity {
       @Override
       public void onResponse(@NonNull Call<TagInfo> call, @NonNull Response<TagInfo> response) {
         if (response.isSuccessful()) {
-          storeTags(response.body());
+          TagInfo tagInfo = response.body();
+          if (tagInfo != null) {
+            storeTags(tagInfo);
+          }
         }
       }
 
@@ -138,8 +145,8 @@ public class LauncherActivity extends BaseActivity {
   }
 
   private void signUp() {
-    Intent i = new Intent(Intent.ACTION_VIEW);
-    i.setData(Uri.parse(Constant.SIGN_UP_URL));
-    startActivity(i);
+    Intent intent = new Intent(Intent.ACTION_VIEW);
+    intent.setData(Uri.parse(Constant.SIGN_UP_URL));
+    startActivity(intent);
   }
 }
