@@ -3,6 +3,8 @@ package com.github.bkhezry.persianner.model;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
 
 import com.github.bkhezry.persianner.R;
 import com.google.gson.annotations.SerializedName;
@@ -11,6 +13,7 @@ import com.mikepenz.fastadapter.items.AbstractItem;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
@@ -103,6 +106,10 @@ public class NerStandardTagsItem extends AbstractItem<NerStandardTagsItem, NerSt
 
   protected static class MyViewHolder extends FastAdapter.ViewHolder<NerStandardTagsItem> {
     View view;
+    @BindView(R.id.title_text_view)
+    AppCompatTextView titleTextView;
+    @BindView(R.id.card_view)
+    CardView cardView;
 
     MyViewHolder(View view) {
       super(view);
@@ -112,12 +119,12 @@ public class NerStandardTagsItem extends AbstractItem<NerStandardTagsItem, NerSt
 
     @Override
     public void bindView(@NonNull NerStandardTagsItem item, @NonNull List<Object> payloads) {
-
-
+      titleTextView.setText(item.getTitle() + " " + item.getPersianName());
     }
 
     @Override
     public void unbindView(@NonNull NerStandardTagsItem item) {
+      titleTextView.setText(null);
     }
 
   }
