@@ -40,8 +40,10 @@ dependencies {
 
     implementation 'com.github.bkhezry:prefser:v2.2.1-rx2'
 
-
     implementation 'com.github.ybq:Android-SpinKit:1.1.0'
+
+    implementation 'io.github.inflationx:viewpump:1.0.0'
+    implementation 'io.github.inflationx:calligraphy3:3.0.0'
 
 
     //ButterKnife
