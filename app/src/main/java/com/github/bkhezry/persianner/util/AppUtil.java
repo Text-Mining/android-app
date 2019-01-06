@@ -5,6 +5,10 @@ import android.content.Context;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.NerStandardTagsItem_;
@@ -42,4 +46,11 @@ public class AppUtil {
       return "#ffffff";
     }
   }
+
+  public static void showFragment(Fragment fragment, FragmentManager fragmentManager) {
+    FragmentTransaction transaction = fragmentManager.beginTransaction();
+    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+    transaction.add(android.R.id.content, fragment).addToBackStack(null).commit();
+  }
+
 }
