@@ -11,18 +11,18 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_xlarge"
+        android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginEnd="@dimen/spacing_large"
-        android:layout_marginBottom="@dimen/spacing_xlarge"
+        android:layout_marginBottom="@dimen/spacing_large"
         app:cardCornerRadius="10dp"
         app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
