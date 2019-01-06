@@ -12,12 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.github.bkhezry.persianner.R;
+import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.WordsItem;
+import com.github.bkhezry.persianner.util.MyApplication;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
+import io.objectbox.Box;
+import io.objectbox.BoxStore;
 
 public class SelectTagFragment extends DialogFragment {
   private WordsItem item;
+  private Box<NerStandardTagsItem> tagsItemBox;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -25,7 +32,15 @@ public class SelectTagFragment extends DialogFragment {
     View view = inflater.inflate(R.layout.fragment_select_tag,
         container, false);
     ButterKnife.bind(this, view);
+    BoxStore boxStore = MyApplication.getBoxStore();
+    tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
+    List<NerStandardTagsItem> tagsItems = tagsItemBox.getAll();
+    handleTagItems(tagsItems);
     return view;
+  }
+
+  private void handleTagItems(List<NerStandardTagsItem> tagsItems) {
+
   }
 
   @NonNull
