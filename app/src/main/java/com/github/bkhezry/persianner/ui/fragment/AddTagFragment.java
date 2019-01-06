@@ -12,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.github.bkhezry.persianner.R;
+import com.github.bkhezry.persianner.model.WordsItem;
 
 import butterknife.ButterKnife;
 
 public class AddTagFragment extends DialogFragment {
+  private WordsItem item;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -41,4 +43,7 @@ public class AddTagFragment extends DialogFragment {
   }
 
 
+  public void setWordItem(WordsItem wordsItem) {
+    this.item = wordsItem;
+  }
 }
