@@ -20,9 +20,13 @@ import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.WordsItem;
 import com.github.bkhezry.persianner.util.MyApplication;
 import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
+import com.mikepenz.fastadapter.listeners.OnClickListener;
 
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,12 +58,18 @@ public class SelectTagFragment extends DialogFragment {
     mItemAdapter = new ItemAdapter<>();
     mFastAdapter = FastAdapter.with(mItemAdapter);
     recyclerView.setAdapter(mFastAdapter);
-    List<NerStandardTagsItem> tagsItems = tagsItemBox.getAll();
-    handleTagItems(tagsItems);
+    mFastAdapter.withOnClickListener(new OnClickListener<NerStandardTagsItem>() {
+      @Override
+      public boolean onClick(@Nullable View v, @NonNull IAdapter<NerStandardTagsItem> adapter, @NonNull NerStandardTagsItem item, int position) {
+        return true;
+      }
+    });
+    handleTagItems();
     return view;
   }
 
-  private void handleTagItems(List<NerStandardTagsItem> tagsItems) {
+  private void handleTagItems() {
+    List<NerStandardTagsItem> tagsItems = tagsItemBox.getAll();
     mItemAdapter.clear();
     mItemAdapter.add(tagsItems);
   }
