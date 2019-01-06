@@ -1,6 +1,7 @@
 package com.github.bkhezry.persianner.ui.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -71,7 +72,7 @@ public class LauncherActivity extends AppCompatActivity {
             authInfo.setEmail(email);
             storeAuthInfo(authInfo);
           } else {
-
+            //TODO show user & password is invalid message
           }
         }
 
@@ -94,6 +95,8 @@ public class LauncherActivity extends AppCompatActivity {
   }
 
   private void signUp() {
-
+    Intent i = new Intent(Intent.ACTION_VIEW);
+    i.setData(Uri.parse(Constant.SIGN_UP_URL));
+    startActivity(i);
   }
 }
