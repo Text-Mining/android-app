@@ -2,8 +2,12 @@ package com.github.bkhezry.persianner.util;
 
 import android.app.Application;
 
+import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.model.MyObjectBox;
 
+import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.viewpump.ViewPump;
 import io.objectbox.BoxStore;
 import io.objectbox.android.AndroidObjectBrowser;
 import io.objectbox.android.BuildConfig;
@@ -14,6 +18,13 @@ public class MyApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
+    ViewPump.init(ViewPump.builder()
+        .addInterceptor(new CalligraphyInterceptor(
+            new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Vazir.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()))
+        .build());
     createBoxStore();
   }
 
