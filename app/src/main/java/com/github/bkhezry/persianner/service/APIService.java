@@ -23,4 +23,11 @@ public interface APIService {
 
   @GET("ner/standardtags")
   Call<TagInfo> tags();
+
+
+  @POST("/ner/tagword")
+  @FormUrlEncoded
+  Call<AuthInfo> tagWord(@Field("SentenceId") String sentenceId,
+                         @Field("WordId") String password,
+                         @Field("UserTag") String userTag);
 }
