@@ -2,6 +2,7 @@ package com.github.bkhezry.persianner.util;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -53,4 +54,7 @@ public class AppUtil {
     transaction.add(android.R.id.content, fragment).addToBackStack(null).commit();
   }
 
+  public static boolean isAtLeastVersion(int version) {
+    return Build.VERSION.SDK_INT >= version;
+  }
 }
