@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.model.AuthInfo;
+import com.github.bkhezry.persianner.model.TagInfo;
 import com.github.bkhezry.persianner.service.APIService;
 import com.github.bkhezry.persianner.util.AppUtil;
 import com.github.bkhezry.persianner.util.Constant;
@@ -48,7 +49,21 @@ public class LauncherActivity extends AppCompatActivity {
   }
 
   private void getTags() {
+    Call<TagInfo> call = apiService.tags();
+    call.enqueue(new Callback<TagInfo>() {
+      @Override
+      public void onResponse(@NonNull Call<TagInfo> call, @NonNull Response<TagInfo> response) {
+        if (response.isSuccessful()) {
 
+        }
+      }
+
+      @Override
+      public void onFailure(@NonNull Call<TagInfo> call, @NonNull Throwable t) {
+        t.printStackTrace();
+
+      }
+    });
   }
 
   private void checkAuthInfo() {
