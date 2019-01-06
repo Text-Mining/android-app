@@ -23,4 +23,8 @@ public class MyApplication extends Application {
       new AndroidObjectBrowser(boxStore).start(this);
     }
   }
+
+  public static BoxStore getBoxStore() {
+    return boxStore;
+  }
 }
