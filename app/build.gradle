@@ -39,6 +39,10 @@ dependencies {
 
     implementation 'com.github.bkhezry:prefser:v2.2.1-rx2'
 
+
+    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
+
+
     //ButterKnife
     implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
