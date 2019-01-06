@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.bkhezry.persianner.R;
+import com.github.bkhezry.persianner.listener.SelectTagEventListener;
 import com.github.bkhezry.persianner.model.AuthInfo;
 import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.ResponseMessage;
@@ -54,6 +55,7 @@ public class SelectTagFragment extends DialogFragment {
   private ItemAdapter<NerStandardTagsItem> mItemAdapter;
   private Prefser prefser;
   private AuthInfo authInfo;
+  private SelectTagEventListener listener;
 
 
   @Override
@@ -89,7 +91,11 @@ public class SelectTagFragment extends DialogFragment {
     call.enqueue(new Callback<ResponseMessage>() {
       @Override
       public void onResponse(@NonNull Call<ResponseMessage> call, @NonNull Response<ResponseMessage> response) {
-
+        if (response.isSuccessful()) {
+          if (listener != null) {
+            listener.tagSuccess(item.getTitle());
+          }
+        }
       }
 
       @Override
@@ -123,5 +129,9 @@ public class SelectTagFragment extends DialogFragment {
   public void setWordData(WordsItem wordsItem, String sentenceId) {
     this.wordsItem = wordsItem;
     this.sentenceId = sentenceId;
+  }
+
+  public void setListener(SelectTagEventListener selectTagEventListener) {
+    this.listener = selectTagEventListener;
   }
 }

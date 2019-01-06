@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.github.bkhezry.persianner.R;
+import com.github.bkhezry.persianner.listener.SelectTagEventListener;
 import com.github.bkhezry.persianner.model.AuthInfo;
 import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.Sentence;
@@ -102,6 +103,12 @@ public class MainActivity extends BaseActivity {
   private void selectTagFragment(WordsItem wordsItem, String sentenceId) {
     SelectTagFragment fragment = new SelectTagFragment();
     fragment.setWordData(wordsItem, sentenceId);
+    fragment.setListener(new SelectTagEventListener() {
+      @Override
+      public void tagSuccess(String tagTitle) {
+
+      }
+    });
     AppUtil.showFragment(fragment, getSupportFragmentManager());
   }
 
