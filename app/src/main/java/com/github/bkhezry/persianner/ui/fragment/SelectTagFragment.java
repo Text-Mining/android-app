@@ -62,11 +62,16 @@ public class SelectTagFragment extends DialogFragment {
     mFastAdapter.withOnClickListener(new OnClickListener<NerStandardTagsItem>() {
       @Override
       public boolean onClick(@Nullable View v, @NonNull IAdapter<NerStandardTagsItem> adapter, @NonNull NerStandardTagsItem item, int position) {
+        submitTag(item);
         return true;
       }
     });
     handleTagItems();
     return view;
+  }
+
+  private void submitTag(NerStandardTagsItem item) {
+
   }
 
   private void handleTagItems() {
