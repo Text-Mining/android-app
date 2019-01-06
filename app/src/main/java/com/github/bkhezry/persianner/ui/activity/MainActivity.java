@@ -64,10 +64,12 @@ public class MainActivity extends BaseActivity {
       public void onResponse(@NonNull Call<Sentence> call, @NonNull Response<Sentence> response) {
         if (response.isSuccessful()) {
           Sentence sentence = response.body();
-          if (sentence.getWords().size() == 0) {
-            getSentence();
-          } else {
-            handleSentence(sentence);
+          if (sentence != null) {
+            if (sentence.getWords().size() == 0) {
+              getSentence();
+            } else {
+              handleSentence(sentence);
+            }
           }
         }
       }
@@ -92,15 +94,15 @@ public class MainActivity extends BaseActivity {
         (Chip) getLayoutInflater().inflate(R.layout.item_chip, chipGroup, false);
     chip.setText(wordsItem.getWord());
     chip.setChipBackgroundColor(ColorStateList.valueOf(Color.parseColor(AppUtil.colorHexString(wordsItem.getTag(), tagsItemBox))));
+    if (!wordsItem.getTag().equals("O")) {
+      chip.setTextColor(Color.WHITE);
+    }
     chip.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         selectTagFragment(chip, wordsItem, sentenceId);
       }
     });
-    if (!wordsItem.getTag().equals("O")) {
-      chip.setTextColor(Color.WHITE);
-    }
     return chip;
   }
 
