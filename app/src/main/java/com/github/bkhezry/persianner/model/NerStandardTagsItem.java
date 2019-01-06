@@ -1,12 +1,13 @@
 package com.github.bkhezry.persianner.model;
 
+import android.graphics.Color;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.cardview.widget.CardView;
 
 import com.github.bkhezry.persianner.R;
+import com.google.android.material.card.MaterialCardView;
 import com.google.gson.annotations.SerializedName;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.items.AbstractItem;
@@ -109,7 +110,7 @@ public class NerStandardTagsItem extends AbstractItem<NerStandardTagsItem, NerSt
     @BindView(R.id.title_text_view)
     AppCompatTextView titleTextView;
     @BindView(R.id.card_view)
-    CardView cardView;
+    MaterialCardView cardView;
 
     MyViewHolder(View view) {
       super(view);
@@ -120,6 +121,10 @@ public class NerStandardTagsItem extends AbstractItem<NerStandardTagsItem, NerSt
     @Override
     public void bindView(@NonNull NerStandardTagsItem item, @NonNull List<Object> payloads) {
       titleTextView.setText(String.format("%s \n %s", item.getTitle(), item.getPersianName()));
+      cardView.setCardBackgroundColor(Color.parseColor(item.getColor()));
+      if (item.getTitle().equals("O")) {
+        titleTextView.setTextColor(Color.BLACK);
+      }
     }
 
     @Override
