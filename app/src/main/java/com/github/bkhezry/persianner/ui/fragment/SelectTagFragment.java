@@ -66,11 +66,21 @@ public class SelectTagFragment extends DialogFragment {
     View view = inflater.inflate(R.layout.fragment_select_tag,
         container, false);
     ButterKnife.bind(this, view);
+    initVariables();
+    setUpRecyclerView();
+    handleTagItems();
+    return view;
+  }
+
+  private void initVariables() {
     BoxStore boxStore = MyApplication.getBoxStore();
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
     Prefser prefser = new Prefser(getActivity());
     authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
     loadingDialog = AppUtil.getLoadingDialog(getActivity());
+  }
+
+  private void setUpRecyclerView() {
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -84,8 +94,6 @@ public class SelectTagFragment extends DialogFragment {
         return true;
       }
     });
-    handleTagItems();
-    return view;
   }
 
   private void submitTag(NerStandardTagsItem item) {
