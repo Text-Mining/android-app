@@ -11,10 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.model.AuthInfo;
+import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.TagInfo;
 import com.github.bkhezry.persianner.service.APIService;
 import com.github.bkhezry.persianner.util.AppUtil;
 import com.github.bkhezry.persianner.util.Constant;
+import com.github.bkhezry.persianner.util.MyApplication;
 import com.github.bkhezry.persianner.util.RetrofitUtil;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,6 +24,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.objectbox.Box;
+import io.objectbox.BoxStore;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +39,7 @@ public class LauncherActivity extends AppCompatActivity {
   private Prefser prefser;
   private Dialog loadingDialog;
   private APIService apiService;
+  private Box<NerStandardTagsItem> tagsItemBox;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class LauncherActivity extends AppCompatActivity {
     prefser = new Prefser(this);
     loadingDialog = AppUtil.getLoadingDialog(this);
     apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
+    BoxStore boxStore = MyApplication.getBoxStore();
+    tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
     checkAuthInfo();
     getTags();
   }
@@ -67,7 +74,8 @@ public class LauncherActivity extends AppCompatActivity {
   }
 
   private void storeTags(TagInfo tagInfo) {
-    prefser.put(Constant.TAG_INFO, tagInfo);
+    tagsItemBox.removeAll();
+    tagsItemBox.put(tagInfo.getNerStandardTags());
   }
 
   private void checkAuthInfo() {
