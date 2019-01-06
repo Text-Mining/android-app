@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.model.AuthInfo;
 import com.github.bkhezry.persianner.model.NerStandardTagsItem;
+import com.github.bkhezry.persianner.model.ResponseMessage;
 import com.github.bkhezry.persianner.model.WordsItem;
 import com.github.bkhezry.persianner.service.APIService;
 import com.github.bkhezry.persianner.util.Constant;
@@ -37,13 +38,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SelectTagFragment extends DialogFragment {
   @BindView(R.id.title)
   AppCompatTextView title;
   @BindView(R.id.recyclerView)
   RecyclerView recyclerView;
-  private WordsItem item;
+  private WordsItem wordsItem;
   private String sentenceId;
   private Box<NerStandardTagsItem> tagsItemBox;
   private FastAdapter<NerStandardTagsItem> mFastAdapter;
@@ -81,6 +85,18 @@ public class SelectTagFragment extends DialogFragment {
 
   private void submitTag(NerStandardTagsItem item) {
     APIService apiService = RetrofitUtil.getRetrofit(authInfo.getToken()).create(APIService.class);
+    Call<ResponseMessage> call = apiService.tagWord(sentenceId, wordsItem.getWordId(), item.getTitle());
+    call.enqueue(new Callback<ResponseMessage>() {
+      @Override
+      public void onResponse(@NonNull Call<ResponseMessage> call, @NonNull Response<ResponseMessage> response) {
+
+      }
+
+      @Override
+      public void onFailure(@NonNull Call<ResponseMessage> call, @NonNull Throwable t) {
+
+      }
+    });
   }
 
   private void handleTagItems() {
@@ -105,7 +121,7 @@ public class SelectTagFragment extends DialogFragment {
 
 
   public void setWordData(WordsItem wordsItem, String sentenceId) {
-    this.item = wordsItem;
+    this.wordsItem = wordsItem;
     this.sentenceId = sentenceId;
   }
 }

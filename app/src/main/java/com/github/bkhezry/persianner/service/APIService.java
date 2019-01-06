@@ -29,6 +29,6 @@ public interface APIService {
   @POST("/ner/tagword")
   @FormUrlEncoded
   Call<ResponseMessage> tagWord(@Field("SentenceId") String sentenceId,
-                                @Field("WordId") String password,
+                                @Field("WordId") String WordId,
                                 @Field("UserTag") String userTag);
 }
