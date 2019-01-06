@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity {
     chip.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        selectTagFragment(wordsItem, sentenceId);
+        selectTagFragment(chip, wordsItem, sentenceId);
       }
     });
     if (!wordsItem.getTag().equals("O")) {
@@ -100,13 +100,14 @@ public class MainActivity extends BaseActivity {
     return chip;
   }
 
-  private void selectTagFragment(WordsItem wordsItem, String sentenceId) {
+  private void selectTagFragment(Chip chip, WordsItem wordsItem, String sentenceId) {
     SelectTagFragment fragment = new SelectTagFragment();
     fragment.setWordData(wordsItem, sentenceId);
     fragment.setListener(new SelectTagEventListener() {
       @Override
       public void tagSuccess(String tagTitle) {
-
+        wordsItem.setTag(tagTitle);
+        chip.setChipBackgroundColor(ColorStateList.valueOf(Color.parseColor(AppUtil.colorHexString(tagTitle, tagsItemBox))));
       }
     });
     AppUtil.showFragment(fragment, getSupportFragmentManager());
