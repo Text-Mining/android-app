@@ -1,12 +1,22 @@
 package com.github.bkhezry.persianner.model;
 
-import com.google.gson.annotations.SerializedName;
+import android.view.View;
 
+import androidx.annotation.NonNull;
+
+import com.github.bkhezry.persianner.R;
+import com.google.gson.annotations.SerializedName;
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.items.AbstractItem;
+
+import java.util.List;
+
+import butterknife.ButterKnife;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 
 @Entity
-public class NerStandardTagsItem {
+public class NerStandardTagsItem extends AbstractItem<NerStandardTagsItem, NerStandardTagsItem.MyViewHolder> {
 
   @Id
   private Long id;
@@ -72,5 +82,43 @@ public class NerStandardTagsItem {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  @NonNull
+  @Override
+  public MyViewHolder getViewHolder(@NonNull View view) {
+    return new MyViewHolder(view);
+  }
+
+  @Override
+  public int getType() {
+    return R.id.fastadapter_item_adapter;
+  }
+
+  @Override
+  public int getLayoutRes() {
+    return R.layout.item_tag_info;
+  }
+
+
+  protected static class MyViewHolder extends FastAdapter.ViewHolder<NerStandardTagsItem> {
+    View view;
+
+    MyViewHolder(View view) {
+      super(view);
+      ButterKnife.bind(this, view);
+      this.view = view;
+    }
+
+    @Override
+    public void bindView(@NonNull NerStandardTagsItem item, @NonNull List<Object> payloads) {
+
+
+    }
+
+    @Override
+    public void unbindView(@NonNull NerStandardTagsItem item) {
+    }
+
   }
 }
