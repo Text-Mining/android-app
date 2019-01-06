@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.model.AuthInfo;
 import com.github.bkhezry.persianner.model.Sentence;
+import com.github.bkhezry.persianner.model.WordsItem;
 import com.github.bkhezry.persianner.service.APIService;
 import com.github.bkhezry.persianner.util.Constant;
 import com.github.bkhezry.persianner.util.RetrofitUtil;
@@ -45,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void onResponse(@NonNull Call<Sentence> call, @NonNull Response<Sentence> response) {
         if (response.isSuccessful()) {
-
+          Sentence sentence = response.body();
+          handleSentence(sentence);
         }
       }
 
@@ -56,9 +58,17 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
-  private void generateChips() {
+  private void handleSentence(Sentence sentence) {
+    for (WordsItem wordsItem : sentence.getWords()) {
+      Chip chip = generateClip(wordsItem);
+      chipGroup.addView(chip);
+    }
+  }
+
+  private Chip generateClip(WordsItem wordsItem) {
     Chip chip =
         (Chip) getLayoutInflater().inflate(R.layout.item_chip, chipGroup, false);
-    chipGroup.addView(chip);
+    chip.setText(wordsItem.getWord());
+    return chip;
   }
 }
