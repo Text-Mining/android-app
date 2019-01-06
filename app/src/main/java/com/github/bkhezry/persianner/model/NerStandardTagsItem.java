@@ -2,7 +2,14 @@ package com.github.bkhezry.persianner.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+
+@Entity
 public class NerStandardTagsItem {
+
+  @Id
+  private Long id;
 
   @SerializedName("PersianName")
   private String persianName;
