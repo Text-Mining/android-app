@@ -6,6 +6,10 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.github.bkhezry.persianner.R;
+import com.github.bkhezry.persianner.model.NerStandardTagsItem;
+import com.github.bkhezry.persianner.model.NerStandardTagsItem_;
+
+import io.objectbox.Box;
 
 public class AppUtil {
   private static final Long timeDiff = 1800000L;
@@ -28,5 +32,14 @@ public class AppUtil {
     lp.height = WindowManager.LayoutParams.MATCH_PARENT;
     dialog.getWindow().setAttributes(lp);
     return dialog;
+  }
+
+  public static String colorHexString(String tagTitle, Box<NerStandardTagsItem> tagsItemBox) {
+    NerStandardTagsItem tagItem = tagsItemBox.query().equal(NerStandardTagsItem_.title, tagTitle).build().findFirst();
+    if (tagItem != null) {
+      return tagItem.getColor();
+    } else {
+      return "#ffffff";
+    }
   }
 }
