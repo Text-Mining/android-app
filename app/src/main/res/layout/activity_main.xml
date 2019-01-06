@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sentence:"
+            android:text="@string/sentence_label"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:textStyle="bold|italic" />
 
@@ -26,7 +26,7 @@
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next Sentence"
+            android:text="@string/next_sentence_label"
             android:textAllCaps="false"
             app:cornerRadius="6dp"
             app:icon="@drawable/ic_navigate_next_black_24dp"

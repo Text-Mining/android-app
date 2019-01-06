@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_large"
                     android:layout_weight="1"
-                    android:text="Select word tag"
+                    android:text="@string/select_word_tag_label"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
 
                 <androidx.appcompat.widget.AppCompatImageButton

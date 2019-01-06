@@ -144,7 +144,7 @@ public class SelectTagFragment extends DialogFragment {
   }
 
   @OnClick(R.id.close_button)
-  public void close() {
+  void close() {
     dismiss();
     if (getFragmentManager() != null) {
       getFragmentManager().popBackStack();

@@ -5,4 +5,7 @@
     <string name="password_label">Password</string>
     <string name="new_user_label">New user?</string>
     <string name="sign_up_label">Sign Up</string>
+    <string name="sentence_label">Sentence:</string>
+    <string name="next_sentence_label">Next Sentence</string>
+    <string name="select_word_tag_label">Select word tag</string>
 </resources>
