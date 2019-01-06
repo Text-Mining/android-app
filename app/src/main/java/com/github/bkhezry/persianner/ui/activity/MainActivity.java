@@ -3,6 +3,7 @@ package com.github.bkhezry.persianner.ui.activity;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 
@@ -79,6 +80,15 @@ public class MainActivity extends BaseActivity {
         (Chip) getLayoutInflater().inflate(R.layout.item_chip, chipGroup, false);
     chip.setText(wordsItem.getWord());
     chip.setChipBackgroundColor(ColorStateList.valueOf(Color.parseColor(AppUtil.colorHexString(wordsItem.getTag(), tagsItemBox))));
+    chip.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+      }
+    });
+    if (!wordsItem.getTag().equals("O")) {
+      chip.setTextColor(Color.WHITE);
+    }
     return chip;
   }
 }
