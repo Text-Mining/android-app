@@ -70,6 +70,7 @@ public class LauncherActivity extends AppCompatActivity {
           if (response.isSuccessful()) {
             AuthInfo authInfo = response.body();
             authInfo.setEmail(email);
+            authInfo.setStoreTimestamp(System.currentTimeMillis());
             storeAuthInfo(authInfo);
           } else {
             //TODO show user & password is invalid message
