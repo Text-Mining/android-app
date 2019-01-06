@@ -3,7 +3,6 @@ package com.github.bkhezry.persianner.ui.activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.model.AuthInfo;
@@ -22,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
   @BindView(R.id.chip_group)
   ChipGroup chipGroup;
