@@ -119,7 +119,7 @@ public class NerStandardTagsItem extends AbstractItem<NerStandardTagsItem, NerSt
 
     @Override
     public void bindView(@NonNull NerStandardTagsItem item, @NonNull List<Object> payloads) {
-      titleTextView.setText(item.getTitle() + " " + item.getPersianName());
+      titleTextView.setText(String.format("%s %s", item.getTitle(), item.getPersianName()));
     }
 
     @Override
