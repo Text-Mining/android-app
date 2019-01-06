@@ -22,6 +22,7 @@ import com.github.bkhezry.persianner.model.NerStandardTagsItem;
 import com.github.bkhezry.persianner.model.ResponseMessage;
 import com.github.bkhezry.persianner.model.WordsItem;
 import com.github.bkhezry.persianner.service.APIService;
+import com.github.bkhezry.persianner.util.AppUtil;
 import com.github.bkhezry.persianner.util.Constant;
 import com.github.bkhezry.persianner.util.MyApplication;
 import com.github.bkhezry.persianner.util.RetrofitUtil;
@@ -56,6 +57,7 @@ public class SelectTagFragment extends DialogFragment {
   private Prefser prefser;
   private AuthInfo authInfo;
   private SelectTagEventListener listener;
+  private Dialog loadingDialog;
 
 
   @Override
@@ -68,6 +70,7 @@ public class SelectTagFragment extends DialogFragment {
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
     prefser = new Prefser(getActivity());
     authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
+    loadingDialog = AppUtil.getLoadingDialog(getActivity());
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -86,11 +89,13 @@ public class SelectTagFragment extends DialogFragment {
   }
 
   private void submitTag(NerStandardTagsItem item) {
+    loadingDialog.show();
     APIService apiService = RetrofitUtil.getRetrofit(authInfo.getToken()).create(APIService.class);
     Call<ResponseMessage> call = apiService.tagWord(sentenceId, wordsItem.getWordId(), item.getTitle());
     call.enqueue(new Callback<ResponseMessage>() {
       @Override
       public void onResponse(@NonNull Call<ResponseMessage> call, @NonNull Response<ResponseMessage> response) {
+        loadingDialog.dismiss();
         if (response.isSuccessful()) {
           if (listener != null) {
             listener.tagSuccess(item.getTitle());
@@ -100,7 +105,8 @@ public class SelectTagFragment extends DialogFragment {
 
       @Override
       public void onFailure(@NonNull Call<ResponseMessage> call, @NonNull Throwable t) {
-
+        loadingDialog.dismiss();
+        t.printStackTrace();
       }
     });
   }
