@@ -19,7 +19,15 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
         app:elevation="6dp"
-        app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar" />
+        app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
     <FrameLayout
         android:id="@+id/bottom_drawer"
