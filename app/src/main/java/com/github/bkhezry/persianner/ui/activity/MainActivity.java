@@ -22,6 +22,7 @@ import com.github.bkhezry.persianner.util.MyApplication;
 import com.github.bkhezry.persianner.util.RetrofitUtil;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
 import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.navigation.NavigationView;
@@ -45,7 +46,7 @@ public class MainActivity extends BaseActivity {
   BottomAppBar bar;
   @BindView(R.id.navigation_view)
   NavigationView navigationView;
-
+  private BottomSheetBehavior bottomDrawerBehavior;
   private AuthInfo authInfo;
   private Box<NerStandardTagsItem> tagsItemBox;
 
@@ -55,8 +56,24 @@ public class MainActivity extends BaseActivity {
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
     setSupportActionBar(bar);
+    initBottomNavigationView();
     initVariables();
     getSentence();
+  }
+
+  private void initBottomNavigationView() {
+    View bottomDrawer = coordinatorLayout.findViewById(R.id.bottom_drawer);
+    bottomDrawerBehavior = BottomSheetBehavior.from(bottomDrawer);
+    bottomDrawerBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+    bar.setNavigationOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            bottomDrawerBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+          }
+        });
+    bar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
+
   }
 
   private void initVariables() {
