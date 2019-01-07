@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.github.bkhezry.persianner.R;
 import com.github.bkhezry.persianner.listener.SelectTagEventListener;
@@ -20,8 +21,10 @@ import com.github.bkhezry.persianner.util.Constant;
 import com.github.bkhezry.persianner.util.MyApplication;
 import com.github.bkhezry.persianner.util.RetrofitUtil;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +39,13 @@ public class MainActivity extends BaseActivity {
 
   @BindView(R.id.chip_group)
   ChipGroup chipGroup;
+  @BindView(R.id.coordinatorLayout)
+  CoordinatorLayout coordinatorLayout;
+  @BindView(R.id.bar)
+  BottomAppBar bar;
+  @BindView(R.id.navigation_view)
+  NavigationView navigationView;
+
   private AuthInfo authInfo;
   private Box<NerStandardTagsItem> tagsItemBox;
 
