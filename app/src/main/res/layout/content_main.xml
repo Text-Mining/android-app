@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.activity.MainActivity"
@@ -14,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingStart="@dimen/spacing_large"
-        android:paddingEnd="@dimen/spacing_large">
+        android:padding="@dimen/spacing_large">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="0dp"
@@ -42,14 +42,13 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="@dimen/spacing_xlarge"
-        android:layout_marginTop="@dimen/spacing_middle"
         android:layout_marginEnd="@dimen/spacing_xlarge"
-        android:layout_marginBottom="@dimen/spacing_middle"
         android:background="@color/grey_10" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_middle"
         android:background="@color/grey_10"
         android:padding="@dimen/spacing_middle">
 
