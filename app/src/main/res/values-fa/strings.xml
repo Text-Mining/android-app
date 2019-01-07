@@ -8,4 +8,6 @@
     <string name="sentence_label">جمله:</string>
     <string name="next_sentence_label">جمله بعدی</string>
     <string name="select_word_tag_label">انتخاب برچسب</string>
+    <string name="settings_label">تنظیمات</string>
+    <string name="about_label">درباره</string>
 </resources>

@@ -8,4 +8,6 @@
     <string name="sentence_label">Sentence:</string>
     <string name="next_sentence_label">Next Sentence</string>
     <string name="select_word_tag_label">Select word tag</string>
+    <string name="settings_label">Settings</string>
+    <string name="about_label">About</string>
 </resources>
