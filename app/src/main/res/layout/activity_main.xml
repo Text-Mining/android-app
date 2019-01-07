@@ -16,8 +16,7 @@
         style="@style/Widget.MaterialComponents.BottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="bottom"
-        app:backgroundTint="?attr/colorPrimary" />
+        android:layout_gravity="bottom" />
 
     <FrameLayout
         android:id="@+id/bottom_drawer"
@@ -31,10 +30,7 @@
             android:id="@+id/navigation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
             android:layoutDirection="locale"
-            app:itemIconTint="@android:color/black"
-            app:itemTextColor="@android:color/black"
             app:menu="@menu/navigation" />
     </FrameLayout>
 
