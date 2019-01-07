@@ -18,7 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
-        app:elevation="6dp" />
+        app:elevation="6dp"
+        app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar" />
 
     <FrameLayout
         android:id="@+id/bottom_drawer"
