@@ -58,15 +58,16 @@ public class LauncherActivity extends BaseActivity {
     checkInternetConnection();
   }
 
-  private void checkInternetConnection() {
+  @OnClick(R.id.retry_button)
+  void checkInternetConnection() {
     if (NetworkUtils.isConnected()) {
       signInLayout.setVisibility(View.VISIBLE);
       noInternetLayout.setVisibility(View.GONE);
       checkAuthInfo();
-      getTags();
     } else {
       signInLayout.setVisibility(View.GONE);
       noInternetLayout.setVisibility(View.VISIBLE);
+      AppUtil.showSnackbar(noInternetLayout, getString(R.string.no_internet_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
     }
   }
 
@@ -109,7 +110,7 @@ public class LauncherActivity extends BaseActivity {
     if (prefser.contains(Constant.AUTH_INFO)) {
       AuthInfo authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
       if (!AppUtil.isTokenExpire(authInfo.getStoreTimestamp())) {
-        startMainActivity();
+        getTags();
       }
     }
   }
