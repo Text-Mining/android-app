@@ -25,7 +25,7 @@ public interface APIService {
   Call<TagInfo> tags();
 
 
-  @POST("/ner/tagword")
+  @POST("ner/TagWord")
   @FormUrlEncoded
   Call<ResponseMessage> tagWord(@Field("SentenceId") String sentenceId,
                                 @Field("WordId") String WordId,
