@@ -83,8 +83,8 @@ public class MainActivity extends BaseActivity {
     navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
       @Override
       public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        hideBottomDrawer();
         if (menuItem.getItemId() == R.id.about_item) {
+          hideBottomDrawer();
           showAboutFragment();
         }
         return false;

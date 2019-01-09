@@ -16,4 +16,12 @@
     <string name="email_incorrect_label">Please enter correct email address.</string>
     <string name="no_email_password_label">Please enter email and password.</string>
     <string name="retry_label">Retry</string>
+    <string name="version_label">App Version</string>
+    <string name="developer_label">Developer</string>
+    <string name="developer_name_label">Behrouz Khezry</string>
+    <string name="developer_twitter_label" translatable="false">\@bkhezry</string>
+    <string name="description_text">در دنیای امروز، برای پردازش هر چه بهتر متون به زبان فارسی، نیازمند اطلاعاتی هستیم که به عنوان ورودی به الگوریتم‌های هوش مصنوعی و یادگیری عمیق بدهیم. ما، اطلاعات ویکی پدیا فارسی را دریافت و برچسب گذاری کردیم. این اطلاعات، شامل ۲۵ میلیون کلمه در قالب حدود ۱ میلیون جمله است. این اطلاعات به صورت اپن سورس در مخزن Persian NER در دسترس کسب و کارها و پژوهشگران است. با کمک به بهبود برچسب‌ها و اصلاح اشتباهات، به بزرگترین پیکره متنی اطلاعات برچسب‌گذاری شده فارسی کمک کنید.</string>
+    <string name="description_label">Description</string>
+    <string name="website_label">Website</string>
+    <string name="source_code_label">Source Code</string>
 </resources>
