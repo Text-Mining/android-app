@@ -24,4 +24,5 @@
     <string name="website_label">وب‌سایت</string>
     <string name="source_code_label">سورس برنامه در گیت‌هاب</string>
     <string name="browser_not_found_label">برنامه مرورگر یافت نشد</string>
+    <string name="tag_success_message">برچسب با موفقیت ثبت شد</string>
 </resources>

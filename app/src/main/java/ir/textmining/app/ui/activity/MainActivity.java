@@ -175,6 +175,7 @@ public class MainActivity extends BaseActivity {
     fragment.setListener(new SelectTagEventListener() {
       @Override
       public void tagSuccess(String tagTitle) {
+        AppUtil.showSnackbar(chipGroup, getString(R.string.tag_success_message), MainActivity.this, SnackbarUtils.LENGTH_LONG);
         wordsItem.setTag(tagTitle);
         chip.setChipBackgroundColor(ColorStateList.valueOf(Color.parseColor(AppUtil.colorHexString(tagTitle, tagsItemBox))));
       }

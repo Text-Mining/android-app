@@ -25,4 +25,5 @@
     <string name="website_label">Website</string>
     <string name="source_code_label">Source Code</string>
     <string name="browser_not_found_label">Browser not found</string>
+    <string name="tag_success_message">Tag submit success</string>
 </resources>
