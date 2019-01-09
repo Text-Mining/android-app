@@ -15,4 +15,5 @@
     <string name="email_password_incorrect_label">ایمیل یا رمزعبور اشتباه است</string>
     <string name="email_incorrect_label">لطفا ایمیل معتبر وارد نمایید</string>
     <string name="no_email_password_label">ایمیل و رمزعبور را وارد نمایید</string>
+    <string name="retry_label">تلاش مجدد</string>
 </resources>
