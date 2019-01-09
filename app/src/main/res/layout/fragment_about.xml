@@ -185,7 +185,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="?attr/selectableItemBackgroundBorderless"
-                                    app:srcCompat="@drawable/ic_sync_black_24dp" />
+                                    app:srcCompat="@drawable/ic_code_black_24dp" />
 
                                 <View
                                     android:layout_width="@dimen/spacing_mlarge"
