@@ -79,7 +79,7 @@ public class LauncherActivity extends BaseActivity {
     tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
   }
 
-  private void getTags() {
+  private void requestGetTags() {
     Call<TagInfo> call = apiService.tags();
     call.enqueue(new Callback<TagInfo>() {
       @Override
@@ -110,7 +110,7 @@ public class LauncherActivity extends BaseActivity {
     if (prefser.contains(Constant.AUTH_INFO)) {
       AuthInfo authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
       if (!AppUtil.isTokenExpire(authInfo.getStoreTimestamp())) {
-        getTags();
+        requestGetTags();
       }
     }
   }
@@ -148,10 +148,7 @@ public class LauncherActivity extends BaseActivity {
             loadingDialog.dismiss();
             if (response.isSuccessful()) {
               AuthInfo authInfo = response.body();
-              authInfo.setEmail(email);
-              authInfo.setStoreTimestamp(System.currentTimeMillis());
-              storeAuthInfo(authInfo);
-              getTags();
+              handleAuthInfo(authInfo, email);
             } else {
               AppUtil.showSnackbar(view, getString(R.string.email_password_incorrect_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
             }
@@ -169,6 +166,13 @@ public class LauncherActivity extends BaseActivity {
     } else {
       AppUtil.showSnackbar(view, getString(R.string.no_email_password_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
     }
+  }
+
+  private void handleAuthInfo(AuthInfo authInfo, String email) {
+    authInfo.setEmail(email);
+    authInfo.setStoreTimestamp(System.currentTimeMillis());
+    storeAuthInfo(authInfo);
+    requestGetTags();
   }
 
   private void storeAuthInfo(AuthInfo authInfo) {
