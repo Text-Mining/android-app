@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PersianNER</string>
+    <string name="app_name">فارسی‌یار</string>
     <string name="sign_in_label">ورود</string>
     <string name="email_label">ایمیل</string>
     <string name="password_label">رمزعبور</string>
