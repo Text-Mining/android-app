@@ -136,13 +136,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingBottom="@dimen/spacing_large">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/no_internet_label"
+                android:textStyle="bold"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/spacing_xlarge" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/retry_button"

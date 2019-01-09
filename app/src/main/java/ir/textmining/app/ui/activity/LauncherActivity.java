@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.SnackbarUtils;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import butterknife.BindView;
@@ -39,6 +40,10 @@ public class LauncherActivity extends BaseActivity {
   TextInputEditText emailEditText;
   @BindView(R.id.password_edit_text)
   TextInputEditText passwordEditText;
+  @BindView(R.id.sign_in_layout)
+  MaterialCardView signInLayout;
+  @BindView(R.id.no_internet_layout)
+  MaterialCardView noInternetLayout;
   private Prefser prefser;
   private Dialog loadingDialog;
   private APIService apiService;
@@ -50,8 +55,19 @@ public class LauncherActivity extends BaseActivity {
     setContentView(R.layout.activity_launcher);
     ButterKnife.bind(this);
     initVariables();
-    checkAuthInfo();
-    getTags();
+    checkInternetConnection();
+  }
+
+  private void checkInternetConnection() {
+    if (NetworkUtils.isConnected()) {
+      signInLayout.setVisibility(View.VISIBLE);
+      noInternetLayout.setVisibility(View.GONE);
+      checkAuthInfo();
+      getTags();
+    } else {
+      signInLayout.setVisibility(View.GONE);
+      noInternetLayout.setVisibility(View.VISIBLE);
+    }
   }
 
   private void initVariables() {
