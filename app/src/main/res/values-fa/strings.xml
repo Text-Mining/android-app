@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PersianNER</string>
     <string name="sign_in_label">ورود</string>
-    <string name="username_label">نام‌کاربری</string>
+    <string name="email_label">ایمیل</string>
     <string name="password_label">رمزعبور</string>
     <string name="new_user_label">کاربر جدید؟</string>
     <string name="sign_up_label">ثبت‌نام</string>

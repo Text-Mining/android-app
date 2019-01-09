@@ -41,12 +41,12 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/username_label"
+                android:text="@string/email_label"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_edit_text"
+                android:id="@+id/email_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
