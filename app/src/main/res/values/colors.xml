@@ -2,6 +2,7 @@
 <resources>
     <color name="colorAccent">#D81B60</color>
     <color name="grey_10">#e6e6e6</color>
+    <color name="grey_20">#cccccc</color>
     <color name="overlay_dark_50">#80000000</color>
     <color name="grey_60">#666666</color>
     <color name="colorPrimaryDark">#eeeeee</color>
