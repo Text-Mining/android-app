@@ -58,6 +58,14 @@ public class LauncherActivity extends BaseActivity {
     checkInternetConnection();
   }
 
+  private void initVariables() {
+    prefser = new Prefser(this);
+    loadingDialog = AppUtil.getLoadingDialog(this);
+    apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
+    BoxStore boxStore = MyApplication.getBoxStore();
+    tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
+  }
+
   @OnClick(R.id.retry_button)
   void checkInternetConnection() {
     if (NetworkUtils.isConnected()) {
@@ -66,17 +74,8 @@ public class LauncherActivity extends BaseActivity {
       checkAuthInfo();
     } else {
       signInLayout.setVisibility(View.GONE);
-      noInternetLayout.setVisibility(View.VISIBLE);
-      AppUtil.showSnackbar(noInternetLayout, getString(R.string.no_internet_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+      showNoInternetLayout();
     }
-  }
-
-  private void initVariables() {
-    prefser = new Prefser(this);
-    loadingDialog = AppUtil.getLoadingDialog(this);
-    apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
-    BoxStore boxStore = MyApplication.getBoxStore();
-    tagsItemBox = boxStore.boxFor(NerStandardTagsItem.class);
   }
 
   private void requestGetTags() {
@@ -113,11 +112,24 @@ public class LauncherActivity extends BaseActivity {
     if (prefser.contains(Constant.AUTH_INFO)) {
       AuthInfo authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
       if (!AppUtil.isTokenExpire(authInfo.getStoreTimestamp())) {
-        noInternetLayout.setVisibility(View.GONE);
-        signInLayout.setVisibility(View.GONE);
-        requestGetTags();
+        hideLayouts();
+        if (NetworkUtils.isConnected()) {
+          requestGetTags();
+        } else {
+          showNoInternetLayout();
+        }
       }
     }
+  }
+
+  private void showNoInternetLayout() {
+    noInternetLayout.setVisibility(View.VISIBLE);
+    AppUtil.showSnackbar(noInternetLayout, getString(R.string.no_internet_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+  }
+
+  private void hideLayouts() {
+    noInternetLayout.setVisibility(View.GONE);
+    signInLayout.setVisibility(View.GONE);
   }
 
   @OnClick({R.id.sign_in_button, R.id.sign_up})
