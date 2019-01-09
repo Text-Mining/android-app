@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.SnackbarUtils;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
@@ -100,6 +102,14 @@ public class SelectTagFragment extends DialogFragment {
   }
 
   private void submitTag(NerStandardTagsItem item) {
+    if (NetworkUtils.isConnected()) {
+      requestSubmitTag(item);
+    } else {
+      AppUtil.showSnackbar(title, getString(R.string.no_internet_label), activity, SnackbarUtils.LENGTH_LONG);
+    }
+  }
+
+  private void requestSubmitTag(NerStandardTagsItem item) {
     loadingDialog.show();
     APIService apiService = RetrofitUtil.getRetrofit(authInfo.getToken()).create(APIService.class);
     Call<ResponseMessage> call = apiService.tagWord(sentenceId, wordsItem.getWordId(), item.getTitle());
