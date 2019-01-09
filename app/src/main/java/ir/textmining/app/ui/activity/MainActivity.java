@@ -3,6 +3,7 @@ package ir.textmining.app.ui.activity;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ import ir.textmining.app.model.NerStandardTagsItem;
 import ir.textmining.app.model.Sentence;
 import ir.textmining.app.model.WordsItem;
 import ir.textmining.app.service.APIService;
+import ir.textmining.app.ui.fragment.AboutFragment;
 import ir.textmining.app.ui.fragment.SelectTagFragment;
 import ir.textmining.app.util.AppUtil;
 import ir.textmining.app.util.Constant;
@@ -78,7 +80,25 @@ public class MainActivity extends BaseActivity {
           }
         });
     bar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
+    navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+      @Override
+      public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        hideBottomDrawer();
+        if (menuItem.getItemId() == R.id.about_item) {
+          showAboutFragment();
+        }
+        return false;
+      }
+    });
 
+  }
+
+  private void showAboutFragment() {
+    AppUtil.showFragment(new AboutFragment(), getSupportFragmentManager());
+  }
+
+  private void hideBottomDrawer() {
+    bottomDrawerBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
   }
 
   private void initVariables() {
