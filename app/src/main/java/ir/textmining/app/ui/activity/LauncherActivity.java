@@ -80,10 +80,12 @@ public class LauncherActivity extends BaseActivity {
   }
 
   private void requestGetTags() {
+    loadingDialog.show();
     Call<TagInfo> call = apiService.tags();
     call.enqueue(new Callback<TagInfo>() {
       @Override
       public void onResponse(@NonNull Call<TagInfo> call, @NonNull Response<TagInfo> response) {
+        loadingDialog.dismiss();
         if (response.isSuccessful()) {
           TagInfo tagInfo = response.body();
           if (tagInfo != null) {
@@ -95,6 +97,7 @@ public class LauncherActivity extends BaseActivity {
 
       @Override
       public void onFailure(@NonNull Call<TagInfo> call, @NonNull Throwable t) {
+        loadingDialog.dismiss();
         t.printStackTrace();
 
       }
@@ -110,6 +113,8 @@ public class LauncherActivity extends BaseActivity {
     if (prefser.contains(Constant.AUTH_INFO)) {
       AuthInfo authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
       if (!AppUtil.isTokenExpire(authInfo.getStoreTimestamp())) {
+        noInternetLayout.setVisibility(View.GONE);
+        signInLayout.setVisibility(View.GONE);
         requestGetTags();
       }
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#039be5</color>
     <color name="grey_10">#e6e6e6</color>
     <color name="grey_20">#cccccc</color>
     <color name="overlay_dark_50">#80000000</color>
