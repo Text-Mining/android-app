@@ -11,4 +11,8 @@
     <string name="settings_label">Settings</string>
     <string name="about_label">About</string>
     <string name="ok_label">OK</string>
+    <string name="no_internet_label">Check your network connection</string>
+    <string name="email_password_incorrect_label">Email or password incorrect</string>
+    <string name="email_incorrect_label">Please enter correct email address.</string>
+    <string name="no_email_password_label">Please enter email and password.</string>
 </resources>

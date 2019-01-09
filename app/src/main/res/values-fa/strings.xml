@@ -11,4 +11,8 @@
     <string name="settings_label">تنظیمات</string>
     <string name="about_label">درباره</string>
     <string name="ok_label">باشه</string>
+    <string name="no_internet_label">ارتباط اینترنتی خود را چک کنید</string>
+    <string name="email_password_incorrect_label">ایمیل یا رمزعبور اشتباه است</string>
+    <string name="email_incorrect_label">لطفا ایمیل معتبر وارد نمایید</string>
+    <string name="no_email_password_label">ایمیل و رمزعبور را وارد نمایید</string>
 </resources>

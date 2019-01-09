@@ -114,7 +114,7 @@ public class LauncherActivity extends BaseActivity {
     if (NetworkUtils.isConnected()) {
       requestSignIn(view);
     } else {
-      AppUtil.showSnackbar(view, "check your network connection.", LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+      AppUtil.showSnackbar(view, getString(R.string.no_internet_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
     }
   }
 
@@ -136,7 +136,7 @@ public class LauncherActivity extends BaseActivity {
               storeAuthInfo(authInfo);
               getTags();
             } else {
-              AppUtil.showSnackbar(view, "Email or password not valid.", LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+              AppUtil.showSnackbar(view, getString(R.string.email_password_incorrect_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
             }
           }
 
@@ -147,10 +147,10 @@ public class LauncherActivity extends BaseActivity {
           }
         });
       } else {
-        AppUtil.showSnackbar(view, "Please enter correct email address.", LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+        AppUtil.showSnackbar(view, getString(R.string.email_incorrect_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
       }
     } else {
-      AppUtil.showSnackbar(view, "Please enter email and password.", LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+      AppUtil.showSnackbar(view, getString(R.string.no_email_password_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
     }
   }
 
