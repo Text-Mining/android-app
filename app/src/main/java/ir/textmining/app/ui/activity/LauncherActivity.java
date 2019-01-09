@@ -4,10 +4,14 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.SnackbarUtils;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -31,8 +35,8 @@ import retrofit2.Response;
 
 public class LauncherActivity extends BaseActivity {
 
-  @BindView(R.id.username_edit_text)
-  TextInputEditText usernameEditText;
+  @BindView(R.id.email_edit_text)
+  TextInputEditText emailEditText;
   @BindView(R.id.password_edit_text)
   TextInputEditText passwordEditText;
   private Prefser prefser;
@@ -67,6 +71,7 @@ public class LauncherActivity extends BaseActivity {
           TagInfo tagInfo = response.body();
           if (tagInfo != null) {
             storeTags(tagInfo);
+            startMainActivity();
           }
         }
       }
@@ -97,7 +102,7 @@ public class LauncherActivity extends BaseActivity {
   public void handleButtonClick(View view) {
     switch (view.getId()) {
       case R.id.sign_in_button:
-        signIn();
+        signIn(view);
         break;
       case R.id.sign_up:
         signUp();
@@ -105,38 +110,52 @@ public class LauncherActivity extends BaseActivity {
     }
   }
 
-  private void signIn() {
-    String email = usernameEditText.getText().toString();
-    String password = passwordEditText.getText().toString();
-    if (!email.equals("") && !password.equals("")) {
-      loadingDialog.show();
-      Call<AuthInfo> call = apiService.signIn(email, password);
-      call.enqueue(new Callback<AuthInfo>() {
-        @Override
-        public void onResponse(@NonNull Call<AuthInfo> call, @NonNull Response<AuthInfo> response) {
-          loadingDialog.dismiss();
-          if (response.isSuccessful()) {
-            AuthInfo authInfo = response.body();
-            authInfo.setEmail(email);
-            authInfo.setStoreTimestamp(System.currentTimeMillis());
-            storeAuthInfo(authInfo);
-          } else {
-            //TODO show user & password is invalid message
-          }
-        }
+  private void signIn(View view) {
+    if (NetworkUtils.isConnected()) {
+      requestSignIn(view);
+    } else {
+      AppUtil.showSnackbar(view, "check your network connection.", LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+    }
+  }
 
-        @Override
-        public void onFailure(@NonNull Call<AuthInfo> call, @NonNull Throwable t) {
-          loadingDialog.dismiss();
-          t.printStackTrace();
-        }
-      });
+  private void requestSignIn(View view) {
+    String email = emailEditText.getText().toString();
+    String password = passwordEditText.getText().toString();
+    if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+      if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        loadingDialog.show();
+        Call<AuthInfo> call = apiService.signIn(email, password);
+        call.enqueue(new Callback<AuthInfo>() {
+          @Override
+          public void onResponse(@NonNull Call<AuthInfo> call, @NonNull Response<AuthInfo> response) {
+            loadingDialog.dismiss();
+            if (response.isSuccessful()) {
+              AuthInfo authInfo = response.body();
+              authInfo.setEmail(email);
+              authInfo.setStoreTimestamp(System.currentTimeMillis());
+              storeAuthInfo(authInfo);
+              getTags();
+            } else {
+              AppUtil.showSnackbar(view, "Email or password not valid.", LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+            }
+          }
+
+          @Override
+          public void onFailure(@NonNull Call<AuthInfo> call, @NonNull Throwable t) {
+            loadingDialog.dismiss();
+            t.printStackTrace();
+          }
+        });
+      } else {
+        AppUtil.showSnackbar(view, "Please enter correct email address.", LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+      }
+    } else {
+      AppUtil.showSnackbar(view, "Please enter email and password.", LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
     }
   }
 
   private void storeAuthInfo(AuthInfo authInfo) {
     prefser.put(Constant.AUTH_INFO, authInfo);
-    startMainActivity();
   }
 
   private void startMainActivity() {
