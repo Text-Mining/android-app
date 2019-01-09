@@ -189,6 +189,7 @@ public class LauncherActivity extends BaseActivity {
     authInfo.setEmail(email);
     authInfo.setStoreTimestamp(System.currentTimeMillis());
     storeAuthInfo(authInfo);
+    hideLayouts();
     requestGetTags();
   }
 
