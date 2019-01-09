@@ -1,13 +1,14 @@
 package ir.textmining.app.ui.fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -23,9 +24,7 @@ public class AboutFragment extends DialogFragment {
   AppCompatTextView title;
   @BindView(R.id.version_app_text_view)
   AppCompatTextView versionAppTextView;
-  @BindView(R.id.developer_layout)
-  LinearLayout developerLayout;
-
+  private Activity activity;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -33,9 +32,20 @@ public class AboutFragment extends DialogFragment {
     View view = inflater.inflate(R.layout.fragment_about,
         container, false);
     ButterKnife.bind(this, view);
+    activity = getActivity();
+    setAppVersion();
     return view;
   }
 
+  private void setAppVersion() {
+    String versionName = "";
+    try {
+      versionName = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0).versionName;
+    } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+    }
+    versionAppTextView.setText(versionName);
+  }
 
   @NonNull
   @Override
@@ -60,7 +70,7 @@ public class AboutFragment extends DialogFragment {
   }
 
   @OnClick({R.id.source_code_layout, R.id.website_layout, R.id.developer_layout})
-  public void handleLayoutClick(View view) {
+  void handleLayoutClick(View view) {
     switch (view.getId()) {
       case R.id.source_code_layout:
         break;
