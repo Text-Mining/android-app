@@ -15,6 +15,15 @@
         android:layout_height="90dp"
         android:src="@drawable/ic_logo" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textStyle="bold" />
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/sign_in_layout"
         android:layout_width="match_parent"
@@ -144,8 +153,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/no_internet_label"
-                android:textStyle="bold"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="0dp"
