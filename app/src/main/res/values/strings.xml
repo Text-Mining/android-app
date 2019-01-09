@@ -10,4 +10,5 @@
     <string name="select_word_tag_label">Select word tag</string>
     <string name="settings_label">Settings</string>
     <string name="about_label">About</string>
+    <string name="ok_label">OK</string>
 </resources>

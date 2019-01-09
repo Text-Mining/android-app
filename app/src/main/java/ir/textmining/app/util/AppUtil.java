@@ -2,13 +2,18 @@ package ir.textmining.app.util;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
+import android.os.Handler;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.blankj.utilcode.util.SnackbarUtils;
 
 import io.objectbox.Box;
 import ir.textmining.app.R;
@@ -55,5 +60,26 @@ public class AppUtil {
 
   public static boolean isAtLeastVersion(int version) {
     return Build.VERSION.SDK_INT >= version;
+  }
+
+  public static void showSnackbar(View view, String message, Context context, int duration) {
+    final Handler handler = new Handler();
+    handler.postDelayed(new Runnable() {
+      @Override
+      public void run() {
+        SnackbarUtils.with(view)
+            .setBottomMargin(20)
+            .setMessage(message)
+            .setMessageColor(Color.WHITE)
+            .setBgColor(context.getResources().getColor(R.color.colorAccent))
+            .setDuration(duration)
+            .setAction(context.getString(R.string.ok_label), Color.YELLOW, new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+              }
+            })
+            .show();
+      }
+    }, 100);
   }
 }

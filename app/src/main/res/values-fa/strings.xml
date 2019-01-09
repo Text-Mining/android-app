@@ -10,4 +10,5 @@
     <string name="select_word_tag_label">انتخاب برچسب</string>
     <string name="settings_label">تنظیمات</string>
     <string name="about_label">درباره</string>
+    <string name="ok_label">باشه</string>
 </resources>
