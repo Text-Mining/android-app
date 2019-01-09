@@ -8,6 +8,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.SnackbarUtils;
 import com.ethanhua.skeleton.Skeleton;
 import com.ethanhua.skeleton.SkeletonScreen;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
@@ -87,6 +89,14 @@ public class MainActivity extends BaseActivity {
   }
 
   private void getSentence() {
+    if (NetworkUtils.isConnected()) {
+      requestGetSentence();
+    } else {
+      AppUtil.showSnackbar(coordinatorLayout, getString(R.string.no_internet_label), this, SnackbarUtils.LENGTH_LONG);
+    }
+  }
+
+  private void requestGetSentence() {
     showSkeleton();
     APIService apiService = RetrofitUtil.getRetrofit(authInfo.getToken()).create(APIService.class);
     Call<Sentence> call = apiService.randomSentence();
