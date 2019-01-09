@@ -8,6 +8,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.ethanhua.skeleton.Skeleton;
+import com.ethanhua.skeleton.SkeletonScreen;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -49,6 +51,7 @@ public class MainActivity extends BaseActivity {
   private BottomSheetBehavior bottomDrawerBehavior;
   private AuthInfo authInfo;
   private Box<NerStandardTagsItem> tagsItemBox;
+  private SkeletonScreen skeletonScreen;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +87,13 @@ public class MainActivity extends BaseActivity {
   }
 
   private void getSentence() {
+    showSkeleton();
     APIService apiService = RetrofitUtil.getRetrofit(authInfo.getToken()).create(APIService.class);
     Call<Sentence> call = apiService.randomSentence();
     call.enqueue(new Callback<Sentence>() {
       @Override
       public void onResponse(@NonNull Call<Sentence> call, @NonNull Response<Sentence> response) {
+        skeletonScreen.hide();
         if (response.isSuccessful()) {
           Sentence sentence = response.body();
           if (sentence != null) {
@@ -103,6 +108,7 @@ public class MainActivity extends BaseActivity {
 
       @Override
       public void onFailure(@NonNull Call<Sentence> call, @NonNull Throwable t) {
+        skeletonScreen.hide();
         t.printStackTrace();
       }
     });
@@ -150,4 +156,14 @@ public class MainActivity extends BaseActivity {
   public void nextSentence() {
     getSentence();
   }
+
+  private void showSkeleton() {
+    skeletonScreen = Skeleton.bind(chipGroup)
+        .shimmer(true)
+        .angle(0)
+        .color(R.color.grey_20)
+        .load(R.layout.item_skeleton)
+        .show();
+  }
+
 }
