@@ -63,3 +63,4 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
 
 }
+apply plugin: 'com.google.gms.google-services'
