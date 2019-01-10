@@ -118,10 +118,9 @@ public class SelectTagFragment extends DialogFragment {
       public void onResponse(@NonNull Call<ResponseMessage> call, @NonNull Response<ResponseMessage> response) {
         loadingDialog.dismiss();
         if (response.isSuccessful()) {
-          if (listener != null) {
-            listener.tagSuccess(item.getTitle());
-            close();
-          }
+          returnResult(item);
+        } else if (response.code() == 401) {
+          tokenInvalid();
         }
       }
 
@@ -132,6 +131,19 @@ public class SelectTagFragment extends DialogFragment {
         t.printStackTrace();
       }
     });
+  }
+
+  private void returnResult(NerStandardTagsItem item) {
+    if (listener != null) {
+      listener.tagSuccess(item.getTitle());
+      close();
+    }
+  }
+
+  private void tokenInvalid() {
+    if (listener != null) {
+      listener.tokenInvalid();
+    }
   }
 
   private void handleTagItems() {

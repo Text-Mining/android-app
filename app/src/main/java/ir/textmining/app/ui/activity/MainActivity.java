@@ -134,7 +134,7 @@ public class MainActivity extends BaseActivity {
               handleSentence(sentence);
             }
           }
-        } else {
+        } else if (response.code() == 401) {
           tokenInvalid();
         }
       }
@@ -192,6 +192,11 @@ public class MainActivity extends BaseActivity {
         if (!tagTitle.equals("O")) {
           chip.setTextColor(Color.WHITE);
         }
+      }
+
+      @Override
+      public void tokenInvalid() {
+        tokenInvalid();
       }
     });
     AppUtil.showFragment(fragment, getSupportFragmentManager());
