@@ -40,6 +40,7 @@ import ir.textmining.app.model.NerStandardTagsItem;
 import ir.textmining.app.model.ResponseMessage;
 import ir.textmining.app.model.WordsItem;
 import ir.textmining.app.service.APIService;
+import ir.textmining.app.ui.activity.LauncherActivity;
 import ir.textmining.app.util.AppUtil;
 import ir.textmining.app.util.Constant;
 import ir.textmining.app.util.MyApplication;
@@ -128,6 +129,7 @@ public class SelectTagFragment extends DialogFragment {
       @Override
       public void onFailure(@NonNull Call<ResponseMessage> call, @NonNull Throwable t) {
         loadingDialog.dismiss();
+        AppUtil.showSnackbar(recyclerView, getString(R.string.retry_request_message), activity, SnackbarUtils.LENGTH_LONG);
         t.printStackTrace();
       }
     });
