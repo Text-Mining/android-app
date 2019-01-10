@@ -69,13 +69,17 @@ public class LauncherActivity extends BaseActivity {
   @OnClick(R.id.retry_button)
   void checkInternetConnection() {
     if (NetworkUtils.isConnected()) {
-      signInLayout.setVisibility(View.VISIBLE);
-      noInternetLayout.setVisibility(View.GONE);
+      showSignInLayout();
       checkAuthInfo();
     } else {
       signInLayout.setVisibility(View.GONE);
       showNoInternetLayout();
     }
+  }
+
+  private void showSignInLayout() {
+    signInLayout.setVisibility(View.VISIBLE);
+    noInternetLayout.setVisibility(View.GONE);
   }
 
   private void requestGetTags() {
@@ -91,6 +95,8 @@ public class LauncherActivity extends BaseActivity {
             storeTags(tagInfo);
             startMainActivity();
           }
+        } else if (response.code() == 401) {
+          tokenInvalid();
         }
       }
 
@@ -102,6 +108,12 @@ public class LauncherActivity extends BaseActivity {
 
       }
     });
+  }
+
+  private void tokenInvalid() {
+    prefser.remove(Constant.AUTH_INFO);
+    showNoInternetLayout();
+    AppUtil.showSnackbar(signInLayout, getString(R.string.sign_in_again_message), LauncherActivity.this, SnackbarUtils.LENGTH_INDEFINITE);
   }
 
   private void storeTags(TagInfo tagInfo) {

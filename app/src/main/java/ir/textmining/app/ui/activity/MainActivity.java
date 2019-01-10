@@ -200,5 +200,4 @@ public class MainActivity extends BaseActivity {
         .load(R.layout.item_skeleton)
         .show();
   }
-
 }
