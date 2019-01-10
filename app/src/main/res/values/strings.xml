@@ -26,4 +26,5 @@
     <string name="source_code_label">Source Code</string>
     <string name="browser_not_found_label">Browser not found</string>
     <string name="tag_success_message">Tag submit success</string>
+    <string name="retry_request_message">Error occur during request. Try again</string>
 </resources>

@@ -96,6 +96,7 @@ public class LauncherActivity extends BaseActivity {
 
       @Override
       public void onFailure(@NonNull Call<TagInfo> call, @NonNull Throwable t) {
+        showNoInternetLayout();
         loadingDialog.dismiss();
         t.printStackTrace();
 
@@ -173,6 +174,7 @@ public class LauncherActivity extends BaseActivity {
 
           @Override
           public void onFailure(@NonNull Call<AuthInfo> call, @NonNull Throwable t) {
+            AppUtil.showSnackbar(view, getString(R.string.retry_request_message), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
             loadingDialog.dismiss();
             t.printStackTrace();
           }
