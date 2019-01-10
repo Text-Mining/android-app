@@ -63,4 +63,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
 
 }
-apply plugin: 'com.google.gms.google-services'
+File googleServicesFile = rootProject.file("app/google-services.json")
+if (googleServicesFile.exists()) {
+    System.out.println("Google Service File Exist")
+    apply plugin: 'com.google.gms.google-services'
+}
