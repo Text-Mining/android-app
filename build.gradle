@@ -4,11 +4,15 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.0-alpha10'
         classpath "io.objectbox:objectbox-gradle-plugin:2.2.0"
+        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'io.fabric.tools:gradle:1.27.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -20,7 +24,7 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         jcenter()
         maven { url 'https://jitpack.io' }
-        
+
     }
 }
 

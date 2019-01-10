@@ -53,6 +53,10 @@ dependencies {
 
     implementation 'com.blankj:utilcode:1.22.10'
 
+    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+
+
     //ButterKnife
     implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
