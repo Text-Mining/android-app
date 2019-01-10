@@ -56,7 +56,7 @@ public class AppUtil {
     transaction.add(android.R.id.content, fragment).addToBackStack(null).commit();
   }
 
-  public static boolean isAtLeastVersion(int version) {
+  static boolean isAtLeastVersion(int version) {
     return Build.VERSION.SDK_INT >= version;
   }
 
