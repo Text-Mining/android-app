@@ -8,4 +8,5 @@ public class Constant {
   public static final String GITHUB_URL = "https://github.com/Text-Mining/";
   public static final String WEB_SITE_URL = "https://app.text-mining.ir/";
   public static final String DEVELOPER_URL = "https://twitter.com/bkhezry";
+  public static final String TOKEN_INVALID = "token-invalid";
 }

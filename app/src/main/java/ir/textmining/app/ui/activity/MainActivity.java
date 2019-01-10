@@ -1,5 +1,6 @@
 package ir.textmining.app.ui.activity;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -133,6 +134,8 @@ public class MainActivity extends BaseActivity {
               handleSentence(sentence);
             }
           }
+        } else {
+          tokenInvalid();
         }
       }
 
@@ -143,6 +146,13 @@ public class MainActivity extends BaseActivity {
         AppUtil.showSnackbar(chipGroup, getString(R.string.retry_request_message), MainActivity.this, SnackbarUtils.LENGTH_LONG);
       }
     });
+  }
+
+  private void tokenInvalid() {
+    Intent intent = new Intent(this, LauncherActivity.class);
+    intent.putExtra(Constant.TOKEN_INVALID, true);
+    startActivity(intent);
+    finish();
   }
 
   private void handleSentence(Sentence sentence) {

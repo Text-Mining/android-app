@@ -54,8 +54,18 @@ public class LauncherActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_launcher);
     ButterKnife.bind(this);
+    getTokenInvalidEvent();
     initVariables();
     checkInternetConnection();
+  }
+
+  private void getTokenInvalidEvent() {
+    if (getIntent() != null) {
+      boolean isTokenInvalid = getIntent().getBooleanExtra(Constant.TOKEN_INVALID, false);
+      if (isTokenInvalid) {
+        tokenInvalid();
+      }
+    }
   }
 
   private void initVariables() {
