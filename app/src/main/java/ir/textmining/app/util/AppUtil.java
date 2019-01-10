@@ -21,7 +21,7 @@ import ir.textmining.app.model.NerStandardTagsItem;
 import ir.textmining.app.model.NerStandardTagsItem_;
 
 public class AppUtil {
-  private static final Long timeDiff = 1800000L;
+  private static final Long timeDiff = (long) (14 * 86400);
 
   public static boolean isTokenExpire(Long storeTimestamp) {
     return System.currentTimeMillis() - storeTimestamp > timeDiff;
@@ -31,8 +31,6 @@ public class AppUtil {
     Dialog dialog = new Dialog(context);
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
     dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-    dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN);
     dialog.setContentView(R.layout.dialog_full_screen_loading);
     dialog.setCancelable(false);
     WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
