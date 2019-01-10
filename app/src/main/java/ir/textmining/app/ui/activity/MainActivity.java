@@ -140,6 +140,7 @@ public class MainActivity extends BaseActivity {
       public void onFailure(@NonNull Call<Sentence> call, @NonNull Throwable t) {
         skeletonScreen.hide();
         t.printStackTrace();
+        AppUtil.showSnackbar(chipGroup, getString(R.string.retry_request_message), MainActivity.this, SnackbarUtils.LENGTH_LONG);
       }
     });
   }
