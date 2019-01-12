@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -35,6 +36,8 @@ import ir.textmining.app.util.RetrofitUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD;
 
 public class LauncherActivity extends BaseActivity {
 
@@ -81,6 +84,8 @@ public class LauncherActivity extends BaseActivity {
   }
 
   private void initVariables() {
+    passwordEditText.setInputType(TYPE_TEXT_VARIATION_PASSWORD);
+    passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
     prefser = new Prefser(this);
     loadingDialog = AppUtil.getLoadingDialog(this);
     apiService = RetrofitUtil.getRetrofit("").create(APIService.class);
