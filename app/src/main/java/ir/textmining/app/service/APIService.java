@@ -33,7 +33,7 @@ public interface APIService {
 
   @POST("auth/register")
   @FormUrlEncoded
-  Call<AuthInfo> signUp(@Field("Email") String email,
-                        @Field("Password") String password,
-                        @Field("ConfirmPassword") String confirmPassword);
+  Call<ResponseMessage> signUp(@Field("Email") String email,
+                               @Field("Password") String password,
+                               @Field("ConfirmPassword") String confirmPassword);
 }
