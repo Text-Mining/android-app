@@ -28,4 +28,5 @@
     <string name="tag_success_message">Tag submit success</string>
     <string name="retry_request_message">Error occur during request. Try again</string>
     <string name="sign_in_again_message">Please sign in again</string>
+    <string name="has_account_label">Have an account?</string>
 </resources>

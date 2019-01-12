@@ -27,4 +27,5 @@
     <string name="tag_success_message">برچسب با موفقیت ثبت شد</string>
     <string name="retry_request_message">خطایی در حین درخواست روی داد. دوباره تلاش کنید</string>
     <string name="sign_in_again_message">لطفا دوباره وارد شوید</string>
+    <string name="has_account_label">حساب‌کاربری دارید؟</string>
 </resources>
