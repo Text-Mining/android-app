@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "816104641782",
+    "firebase_url": "https://persianner-dev.firebaseio.com",
+    "project_id": "persianner-dev",
+    "storage_bucket": "persianner-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816104641782:android:57aae06b9b324095",
+        "android_client_info": {
+          "package_name": "ir.textmining.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816104641782-vgpa3mraiplj60vqocqduhmvnt85ms2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMevfHzF2_pZqx6PWxET0PBubjPET6lrc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
