@@ -1,6 +1,9 @@
 <div dir="rtl">
 
 # فارسی‌یار
+
+[![Build Status](https://travis-ci.org/Text-Mining/android-app.svg?branch=master)](https://travis-ci.org/Text-Mining/android-app)
+
 اپلیکیشن اندروید: برنامه برچسب‌زنی پیکره‌های پردازش متن
 
 <p align="center"><img src="assets/screenshot.png" height="500" /></p>
