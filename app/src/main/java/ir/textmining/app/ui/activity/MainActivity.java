@@ -124,7 +124,7 @@ public class MainActivity extends BaseActivity {
         tokenInvalid();
       }
     });
-    AppUtil.showFragment(new SettingsFragment(), getSupportFragmentManager());
+    AppUtil.showFragment(settingsFragment, getSupportFragmentManager());
   }
 
   private void hideBottomDrawer() {

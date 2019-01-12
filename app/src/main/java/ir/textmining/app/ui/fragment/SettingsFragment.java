@@ -74,6 +74,7 @@ public class SettingsFragment extends DialogFragment {
   void signOut() {
     if (listener != null) {
       listener.signOut();
+      close();
     }
   }
 
