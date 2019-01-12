@@ -2,17 +2,19 @@ package ir.textmining.app.ui.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.SnackbarUtils;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -44,6 +46,16 @@ public class LauncherActivity extends BaseActivity {
   MaterialCardView signInLayout;
   @BindView(R.id.no_internet_layout)
   MaterialCardView noInternetLayout;
+  @BindView(R.id.title_text_view)
+  AppCompatTextView titleTextView;
+  @BindView(R.id.new_user_layout)
+  LinearLayout newUserLayout;
+  @BindView(R.id.has_account_layout)
+  LinearLayout hasAccountLayout;
+  @BindView(R.id.sign_in_button)
+  MaterialButton signInButton;
+  @BindView(R.id.sign_up_button)
+  MaterialButton signUpButton;
   private Prefser prefser;
   private Dialog loadingDialog;
   private APIService apiService;
@@ -155,14 +167,14 @@ public class LauncherActivity extends BaseActivity {
     signInLayout.setVisibility(View.GONE);
   }
 
-  @OnClick({R.id.sign_in_button, R.id.sign_up})
+  @OnClick({R.id.sign_in_button, R.id.sign_up_button})
   public void handleButtonClick(View view) {
     switch (view.getId()) {
       case R.id.sign_in_button:
         signIn(view);
         break;
       case R.id.sign_up:
-        signUp();
+        signUp(view);
         break;
     }
   }
@@ -226,9 +238,35 @@ public class LauncherActivity extends BaseActivity {
     finish();
   }
 
-  private void signUp() {
-    Intent intent = new Intent(Intent.ACTION_VIEW);
-    intent.setData(Uri.parse(Constant.SIGN_UP_URL));
-    startActivity(intent);
+  private void signUp(View view) {
+    //TODO
+  }
+
+  @OnClick({R.id.sign_up, R.id.sign_in})
+  public void handleTypeOfUserLayout(View view) {
+    switch (view.getId()) {
+      case R.id.sign_up:
+        signUPLayout();
+        break;
+      case R.id.sign_in:
+        signInLayout();
+        break;
+    }
+  }
+
+  private void signUPLayout() {
+    titleTextView.setText(getString(R.string.sign_up_label));
+    newUserLayout.setVisibility(View.VISIBLE);
+    signUpButton.setVisibility(View.VISIBLE);
+    hasAccountLayout.setVisibility(View.GONE);
+    signInButton.setVisibility(View.GONE);
+  }
+
+  private void signInLayout() {
+    titleTextView.setText(getString(R.string.sign_in_label));
+    hasAccountLayout.setVisibility(View.VISIBLE);
+    signInButton.setVisibility(View.VISIBLE);
+    newUserLayout.setVisibility(View.GONE);
+    signUpButton.setVisibility(View.GONE);
   }
 }

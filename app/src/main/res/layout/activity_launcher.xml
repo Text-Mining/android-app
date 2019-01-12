@@ -115,7 +115,7 @@
                 android:visibility="gone" />
 
             <LinearLayout
-                android:id="@+id/new_user_layout"
+                android:id="@+id/has_account_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_large"
@@ -147,7 +147,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/has_account_layout"
+                android:id="@+id/new_user_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_large"
