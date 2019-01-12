@@ -24,7 +24,10 @@ import ir.textmining.app.model.NerStandardTagsItem_;
 public class AppUtil {
 
   public static boolean isTokenExpire(AuthInfo authInfo) {
-    return false;
+    Long currentTimeMillis = System.currentTimeMillis();
+    Long currentDiff = currentTimeMillis - authInfo.getCurrentTimestamp();
+    Long timeDiff = authInfo.getExpireTimestamp() - authInfo.getCreateTimestamp();
+    return currentDiff > timeDiff;
   }
 
   public static Dialog getLoadingDialog(Context context) {
