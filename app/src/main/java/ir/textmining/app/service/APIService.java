@@ -30,4 +30,10 @@ public interface APIService {
   Call<ResponseMessage> tagWord(@Field("SentenceId") String sentenceId,
                                 @Field("WordId") String WordId,
                                 @Field("UserTag") String userTag);
+
+  @POST("auth/register")
+  @FormUrlEncoded
+  Call<AuthInfo> signUp(@Field("Email") String email,
+                        @Field("Password") String password,
+                        @Field("ConfirmPassword") String confirmPassword);
 }
