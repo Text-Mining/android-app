@@ -30,4 +30,5 @@
     <string name="has_account_label">حساب‌کاربری دارید؟</string>
     <string name="sign_up_success_message">ثبت‌نام با موفقیت انجام شد. لطفا وارد شوید</string>
     <string name="duplicate_email_message">ایمیل وارد شده قبلا ثبت‌نام کرده است</string>
+    <string name="sign_out_layout">خروج از حساب‌کاربری</string>
 </resources>

@@ -10,13 +10,21 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.DialogFragment;
 
+import com.github.pwittchen.prefser.library.rx2.Prefser;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ir.textmining.app.R;
+import ir.textmining.app.model.AuthInfo;
+import ir.textmining.app.util.Constant;
 
 public class SettingsFragment extends DialogFragment {
+  @BindView(R.id.email_text_view)
+  AppCompatTextView emailTextView;
   private Activity activity;
 
   @Override
@@ -25,8 +33,17 @@ public class SettingsFragment extends DialogFragment {
     View view = inflater.inflate(R.layout.fragment_settings,
         container, false);
     ButterKnife.bind(this, view);
-    activity = getActivity();
+    initVariables();
     return view;
+  }
+
+  private void initVariables() {
+    activity = getActivity();
+    Prefser prefser = new Prefser(activity);
+    AuthInfo authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
+    if (authInfo != null) {
+      emailTextView.setText(authInfo.getEmail());
+    }
   }
 
   @NonNull
@@ -49,5 +66,9 @@ public class SettingsFragment extends DialogFragment {
     if (getFragmentManager() != null) {
       getFragmentManager().popBackStack();
     }
+  }
+
+  @OnClick(R.id.sign_out_button)
+  void signOut() {
   }
 }

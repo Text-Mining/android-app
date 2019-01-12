@@ -84,17 +84,30 @@
                                 android:layout_marginTop="@dimen/spacing_middle"
                                 android:layout_marginBottom="@dimen/spacing_middle"
                                 android:gravity="center_vertical"
-                                android:orientation="horizontal"
+                                android:orientation="vertical"
                                 android:paddingLeft="@dimen/spacing_medium"
                                 android:paddingRight="@dimen/spacing_medium">
 
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/email_text_view"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/spacing_large" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/sign_out_button"
+                                    style="@style/Widget.MaterialComponents.Button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="@string/sign_out_layout"
+                                    android:textAllCaps="false"
+                                    app:icon="@drawable/ic_exit_to_app_black_24dp" />
 
                             </LinearLayout>
 
