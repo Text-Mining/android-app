@@ -72,6 +72,9 @@ public class SettingsFragment extends DialogFragment {
 
   @OnClick(R.id.sign_out_button)
   void signOut() {
+    if (listener != null) {
+      listener.signOut();
+    }
   }
 
   public void setListener(SettingsEventListener settingsEventListener) {
