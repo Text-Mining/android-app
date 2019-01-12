@@ -7,16 +7,15 @@ android:
     - build-tools-28.0.3
     - android-28
   licenses:
-    - '.+'
+    - ".+"
 before_install:
-    - yes | sdkmanager "platforms;android-28"
-    - yes | sdkmanager "build-tools;28.0.3"
-    
+  - openssl aes-256-cbc -K $encrypted_413ff43c2836_key -iv $encrypted_413ff43c2836_iv
+    -in app/src/release/google-services.json.enc -out app/src/release/google-services.json -d
+  - yes | sdkmanager "platforms;android-28"
+  - yes | sdkmanager "build-tools;28.0.3"
 sudo: required
 install: true
-
 before_script:
   - chmod +x gradlew
-
 script:
-- ./gradlew assembleRelease --stacktrace
+  - "./gradlew assembleRelease --stacktrace"
