@@ -15,11 +15,14 @@ import com.blankj.utilcode.util.SnackbarUtils;
 import com.ethanhua.skeleton.Skeleton;
 import com.ethanhua.skeleton.SkeletonScreen;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,10 +66,21 @@ public class MainActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
+    subscribeFirebaseTopic();
     setSupportActionBar(bar);
     initBottomNavigationView();
     initVariables();
     getSentence();
+  }
+
+  private void subscribeFirebaseTopic() {
+    FirebaseMessaging.getInstance().subscribeToTopic("update_app")
+        .addOnCompleteListener(new OnCompleteListener<Void>() {
+          @Override
+          public void onComplete(@NonNull Task<Void> task) {
+
+          }
+        });
   }
 
   private void initBottomNavigationView() {
