@@ -58,6 +58,8 @@ dependencies {
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
 
+    implementation 'com.auth0.android:jwtdecode:1.2.0'
+
     //ButterKnife
     implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
