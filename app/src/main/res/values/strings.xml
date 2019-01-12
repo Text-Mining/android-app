@@ -32,4 +32,5 @@
     <string name="sign_up_success_message">Sign up success. Please sign in</string>
     <string name="duplicate_email_message">This email is duplicate</string>
     <string name="sign_out_layout">Sign Out</string>
+    <string name="token_invalid_message">Token is invalid. please contact administrator</string>
 </resources>

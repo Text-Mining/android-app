@@ -231,14 +231,18 @@ public class LauncherActivity extends BaseActivity {
   private void handleAuthInfo(AuthInfo authInfo, String email) {
     authInfo.setEmail(email);
     JWT jwt = new JWT(authInfo.getToken());
-    Long expireTimestamp = jwt.getExpiresAt().getTime();
-    Long createTimestamp = jwt.getNotBefore().getTime();
-    authInfo.setCreateTimestamp(createTimestamp);
-    authInfo.setExpireTimestamp(expireTimestamp);
-    authInfo.setCurrentTimestamp(System.currentTimeMillis());
-    storeAuthInfo(authInfo);
-    hideLayouts();
-    requestGetTags();
+    if (jwt.getExpiresAt() != null && jwt.getNotBefore() != null) {
+      Long expireTimestamp = jwt.getExpiresAt().getTime();
+      Long createTimestamp = jwt.getNotBefore().getTime();
+      authInfo.setCreateTimestamp(createTimestamp);
+      authInfo.setExpireTimestamp(expireTimestamp);
+      authInfo.setCurrentTimestamp(System.currentTimeMillis());
+      storeAuthInfo(authInfo);
+      hideLayouts();
+      requestGetTags();
+    } else {
+      AppUtil.showSnackbar(titleTextView, getString(R.string.token_invalid_message), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+    }
   }
 
   private void storeAuthInfo(AuthInfo authInfo) {
