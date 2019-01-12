@@ -2,14 +2,17 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.objectbox'
 apply plugin: 'io.fabric'
 
+def versionMajor = 1
+def versionMinor = 2
+def versionPatch = 0
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "ir.textmining.app"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 100
-        versionName "1.0.0"
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -69,4 +72,12 @@ File googleServicesFile = rootProject.file("app/google-services.json")
 if (googleServicesFile.exists()) {
     System.out.println("Google Service File Exist")
     apply plugin: 'com.google.gms.google-services'
+}
+android.applicationVariants.all { variant ->
+    def appName = "PersianNER"
+    variant.outputs.all { output ->
+        def newApkName
+        newApkName = "${appName}-${output.baseName}-${variant.versionName}.apk"
+        output.outputFileName = new File(newApkName)
+    }
 }
