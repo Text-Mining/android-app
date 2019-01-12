@@ -153,7 +153,7 @@ public class LauncherActivity extends BaseActivity {
   private void checkAuthInfo() {
     if (prefser.contains(Constant.AUTH_INFO)) {
       AuthInfo authInfo = prefser.get(Constant.AUTH_INFO, AuthInfo.class, null);
-      if (!AppUtil.isTokenExpire(authInfo.getStoreTimestamp())) {
+      if (!AppUtil.isTokenExpire(authInfo)) {
         hideLayouts();
         if (NetworkUtils.isConnected()) {
           requestGetTags();
@@ -231,11 +231,11 @@ public class LauncherActivity extends BaseActivity {
   private void handleAuthInfo(AuthInfo authInfo, String email) {
     authInfo.setEmail(email);
     JWT jwt = new JWT(authInfo.getToken());
-    Long expireTime = jwt.getExpiresAt().getTime();
-    Long startTime = jwt.getNotBefore().getTime();
-    Long diff = expireTime - startTime;
-    authInfo.setStoreTimestamp(startTime);
-    authInfo.setTokenValidDuration(diff);
+    Long expireTimestamp = jwt.getExpiresAt().getTime();
+    Long createTimestamp = jwt.getNotBefore().getTime();
+    authInfo.setCreateTimestamp(createTimestamp);
+    authInfo.setExpireTimestamp(expireTimestamp);
+    authInfo.setCurrentTimestamp(System.currentTimeMillis());
     storeAuthInfo(authInfo);
     hideLayouts();
     requestGetTags();

@@ -17,14 +17,14 @@ import com.blankj.utilcode.util.SnackbarUtils;
 
 import io.objectbox.Box;
 import ir.textmining.app.R;
+import ir.textmining.app.model.AuthInfo;
 import ir.textmining.app.model.NerStandardTagsItem;
 import ir.textmining.app.model.NerStandardTagsItem_;
 
 public class AppUtil {
-  private static final Long timeDiff = (long) (14 * 86400);
 
-  public static boolean isTokenExpire(Long storeTimestamp) {
-    return System.currentTimeMillis() - storeTimestamp > timeDiff;
+  public static boolean isTokenExpire(AuthInfo authInfo) {
+    return false;
   }
 
   public static Dialog getLoadingDialog(Context context) {

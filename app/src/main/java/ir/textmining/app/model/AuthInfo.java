@@ -7,8 +7,9 @@ public class AuthInfo {
   @SerializedName("token")
   private String token;
   private String email;
-  private Long storeTimestamp;
-  private Long tokenValidDuration;
+  private Long createTimestamp;
+  private Long currentTimestamp;
+  private Long expireTimestamp;
 
   public String getToken() {
     return token;
@@ -26,19 +27,27 @@ public class AuthInfo {
     this.email = email;
   }
 
-  public Long getStoreTimestamp() {
-    return storeTimestamp;
+  public Long getCreateTimestamp() {
+    return createTimestamp;
   }
 
-  public void setStoreTimestamp(Long storeTimestamp) {
-    this.storeTimestamp = storeTimestamp;
+  public void setCreateTimestamp(Long createTimestamp) {
+    this.createTimestamp = createTimestamp;
   }
 
-  public Long getTokenValidDuration() {
-    return tokenValidDuration;
+  public Long getCurrentTimestamp() {
+    return currentTimestamp;
   }
 
-  public void setTokenValidDuration(Long tokenValidDuration) {
-    this.tokenValidDuration = tokenValidDuration;
+  public void setCurrentTimestamp(Long currentTimestamp) {
+    this.currentTimestamp = currentTimestamp;
+  }
+
+  public Long getExpireTimestamp() {
+    return expireTimestamp;
+  }
+
+  public void setExpireTimestamp(Long expireTimestamp) {
+    this.expireTimestamp = expireTimestamp;
   }
 }
