@@ -28,4 +28,6 @@
     <string name="retry_request_message">خطایی در حین درخواست روی داد. دوباره تلاش کنید</string>
     <string name="sign_in_again_message">لطفا دوباره وارد شوید</string>
     <string name="has_account_label">حساب‌کاربری دارید؟</string>
+    <string name="sign_up_success_message">ثبت‌نام با موفقیت انجام شد. لطفا وارد شوید</string>
+    <string name="duplicate_email_message">ایمیل وارد شده قبلا ثبت‌نام کرده است</string>
 </resources>

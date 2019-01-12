@@ -27,6 +27,7 @@ import io.objectbox.BoxStore;
 import ir.textmining.app.R;
 import ir.textmining.app.model.AuthInfo;
 import ir.textmining.app.model.NerStandardTagsItem;
+import ir.textmining.app.model.ResponseMessage;
 import ir.textmining.app.model.TagInfo;
 import ir.textmining.app.service.APIService;
 import ir.textmining.app.util.AppUtil;
@@ -178,7 +179,7 @@ public class LauncherActivity extends BaseActivity {
       case R.id.sign_in_button:
         signIn(view);
         break;
-      case R.id.sign_up:
+      case R.id.sign_up_button:
         signUp(view);
         break;
     }
@@ -248,6 +249,27 @@ public class LauncherActivity extends BaseActivity {
     String password = passwordEditText.getText().toString();
     if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
       if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        loadingDialog.show();
+        Call<ResponseMessage> call = apiService.signUp(email, password, password);
+        call.enqueue(new Callback<ResponseMessage>() {
+          @Override
+          public void onResponse(@NonNull Call<ResponseMessage> call, @NonNull Response<ResponseMessage> response) {
+            loadingDialog.dismiss();
+            if (response.isSuccessful()) {
+              AppUtil.showSnackbar(view, getString(R.string.sign_up_success_message), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+              signInLayout();
+            } else if (response.code() == 400) {
+              AppUtil.showSnackbar(view, getString(R.string.duplicate_email_message), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+            }
+          }
+
+          @Override
+          public void onFailure(@NonNull Call<ResponseMessage> call, @NonNull Throwable t) {
+            AppUtil.showSnackbar(view, getString(R.string.retry_request_message), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+            loadingDialog.dismiss();
+            t.printStackTrace();
+          }
+        });
 
       } else {
         AppUtil.showSnackbar(view, getString(R.string.email_incorrect_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
@@ -283,5 +305,6 @@ public class LauncherActivity extends BaseActivity {
     signInButton.setVisibility(View.VISIBLE);
     newUserLayout.setVisibility(View.GONE);
     signUpButton.setVisibility(View.GONE);
+    passwordEditText.setText(null);
   }
 }

@@ -29,4 +29,6 @@
     <string name="retry_request_message">Error occur during request. Try again</string>
     <string name="sign_in_again_message">Please sign in again</string>
     <string name="has_account_label">Have an account?</string>
+    <string name="sign_up_success_message">Sign up success. Please sign in</string>
+    <string name="duplicate_email_message">This email is duplicate</string>
 </resources>
