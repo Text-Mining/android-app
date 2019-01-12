@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.auth0.android.jwt.JWT;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.SnackbarUtils;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
@@ -229,7 +230,12 @@ public class LauncherActivity extends BaseActivity {
 
   private void handleAuthInfo(AuthInfo authInfo, String email) {
     authInfo.setEmail(email);
-    authInfo.setStoreTimestamp(System.currentTimeMillis());
+    JWT jwt = new JWT(authInfo.getToken());
+    Long expireTime = jwt.getExpiresAt().getTime();
+    Long startTime = jwt.getNotBefore().getTime();
+    Long diff = expireTime - startTime;
+    authInfo.setStoreTimestamp(startTime);
+    authInfo.setTokenValidDuration(diff);
     storeAuthInfo(authInfo);
     hideLayouts();
     requestGetTags();
