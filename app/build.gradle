@@ -68,11 +68,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
 
 }
-File googleServicesFile = rootProject.file("app/google-services.json")
-if (googleServicesFile.exists()) {
-    System.out.println("Google Service File Exist")
-    apply plugin: 'com.google.gms.google-services'
-}
+apply plugin: 'com.google.gms.google-services'
+
 android.applicationVariants.all { variant ->
     def appName = "PersianNER"
     variant.outputs.all { output ->
