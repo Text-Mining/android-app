@@ -31,6 +31,7 @@ import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import ir.textmining.app.R;
 import ir.textmining.app.listener.SelectTagEventListener;
+import ir.textmining.app.listener.SettingsEventListener;
 import ir.textmining.app.model.AuthInfo;
 import ir.textmining.app.model.NerStandardTagsItem;
 import ir.textmining.app.model.Sentence;
@@ -116,6 +117,13 @@ public class MainActivity extends BaseActivity {
   }
 
   private void showSettingsFragment() {
+    SettingsFragment settingsFragment = new SettingsFragment();
+    settingsFragment.setListener(new SettingsEventListener() {
+      @Override
+      public void signOut() {
+        tokenInvalid();
+      }
+    });
     AppUtil.showFragment(new SettingsFragment(), getSupportFragmentManager());
   }
 

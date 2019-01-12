@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ir.textmining.app.R;
+import ir.textmining.app.listener.SettingsEventListener;
 import ir.textmining.app.model.AuthInfo;
 import ir.textmining.app.util.Constant;
 
@@ -26,6 +27,7 @@ public class SettingsFragment extends DialogFragment {
   @BindView(R.id.email_text_view)
   AppCompatTextView emailTextView;
   private Activity activity;
+  private SettingsEventListener listener;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -70,5 +72,9 @@ public class SettingsFragment extends DialogFragment {
 
   @OnClick(R.id.sign_out_button)
   void signOut() {
+  }
+
+  public void setListener(SettingsEventListener settingsEventListener) {
+    this.listener = settingsEventListener;
   }
 }
