@@ -244,7 +244,17 @@ public class LauncherActivity extends BaseActivity {
   }
 
   private void signUp(View view) {
-    //TODO
+    String email = emailEditText.getText().toString();
+    String password = passwordEditText.getText().toString();
+    if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+      if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+
+      } else {
+        AppUtil.showSnackbar(view, getString(R.string.email_incorrect_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+      }
+    } else {
+      AppUtil.showSnackbar(view, getString(R.string.no_email_password_label), LauncherActivity.this, SnackbarUtils.LENGTH_LONG);
+    }
   }
 
   @OnClick({R.id.sign_up, R.id.sign_in})
