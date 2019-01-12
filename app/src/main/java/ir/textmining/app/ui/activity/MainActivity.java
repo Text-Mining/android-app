@@ -38,6 +38,7 @@ import ir.textmining.app.model.WordsItem;
 import ir.textmining.app.service.APIService;
 import ir.textmining.app.ui.fragment.AboutFragment;
 import ir.textmining.app.ui.fragment.SelectTagFragment;
+import ir.textmining.app.ui.fragment.SettingsFragment;
 import ir.textmining.app.util.AppUtil;
 import ir.textmining.app.util.Constant;
 import ir.textmining.app.util.MyApplication;
@@ -99,9 +100,11 @@ public class MainActivity extends BaseActivity {
       @Override
       public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.about_item) {
-          hideBottomDrawer();
           showAboutFragment();
+        } else if (menuItem.getItemId() == R.id.settings_item) {
+          showSettingsFragment();
         }
+        hideBottomDrawer();
         return false;
       }
     });
@@ -110,6 +113,10 @@ public class MainActivity extends BaseActivity {
 
   private void showAboutFragment() {
     AppUtil.showFragment(new AboutFragment(), getSupportFragmentManager());
+  }
+
+  private void showSettingsFragment() {
+    AppUtil.showFragment(new SettingsFragment(), getSupportFragmentManager());
   }
 
   private void hideBottomDrawer() {
