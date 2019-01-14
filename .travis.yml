@@ -10,7 +10,8 @@ android:
     - ".+"
 before_install:
   - openssl aes-256-cbc -K $encrypted_413ff43c2836_key -iv $encrypted_413ff43c2836_iv
-    -in app/src/release/google-services.json.enc -out app/src/release/google-services.json -d
+    -in encrypt.tar.enc -out encrypt.tar -d
+  - tar xvf encrypt.tar
   - yes | sdkmanager "platforms;android-28"
   - yes | sdkmanager "build-tools;28.0.3"
 sudo: required
@@ -19,3 +20,14 @@ before_script:
   - chmod +x gradlew
 script:
   - "./gradlew assembleRelease --stacktrace"
+deploy:
+  provider: releases
+  skip_cleanup: true
+  overwrite: true
+  api_key:
+    secure: UCRWawnW0UeH5RGEEf7Fwj9NN+GOrP4FygGGje6oSIKjbrQaJa8DhiF8ELJbElZD/4xHFcoud2M3OQxRGRkJqxbkhxCrPPrs6TMyT6FzU1UZi4932YCrgvWsWVyMA//edl7FlSFcAgjUd7XRCkZWQXjBjRjXL/3N1B+e4BSnGFTskOfjSOpx8LVZp6MkelbwM5tN/9UP7WT/N9fP12jzo8UgEfUGYriewPSlg8RGhoWps67L3zt/QVhRfboVtRn7dxE7IaApBHbfFrAF4wbYMjZ7cd+nlEi63g77/6IdjRwWvD28gC4TVVD3Kz1Nvlm+ndE0GK33/V2nAi+J4ir3g6swIq0m6IYij91EXFKsGZiznpJdLIW47si5Yrm73eDL+D5rEgjW95i+ksKvIlz+EH1CVny/pLFbmibjQWOIlfXd+xdqvre48kNT0GGC5RCuHRtq+FC84mz44jYvl0Ve/mXs2Xy3g6KdWnc1uewhiu5lMUQvTml/a/3SDFeudxfEOrW0jMllaTciQ7BlO+co4tanP4LmycoenkW179dagIC/MT6hFVxa2Ao1qV3yMmJo+Q/4dJUA9+oN5O78nL/CfJ93xqgCzAk6B44vbbU4VKk9JP83mMj5rVaIyeFv0ankIIFSlxPHADW77WK53uIN2KmKVgTY9yP2MwmfL/OhAJY=
+  file_glob: true
+  file: app/build/outputs/apk/release/PersianNER*.apk
+  on:
+    repo: Text-Mining/android-app
+    tags: true
