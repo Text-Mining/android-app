@@ -27,7 +27,7 @@ public class RetrofitUtil {
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
     //end interceptor
     return new OkHttpClient.Builder()
-        .addInterceptor(interceptor)
+        //.addInterceptor(interceptor)
         .addNetworkInterceptor(
             new Interceptor() {
               @Override
