@@ -6,7 +6,7 @@
 
 اپلیکیشن اندروید: برنامه برچسب‌زنی پیکره‌های پردازش متن
 
-<p align="center"><img src="assets/screenshot.png" height="500" /></p>
+<p align="center"><img src="assets/screenshot.png" /></p>
 </div>
 
 **نیاز‌مندی‌ها**
