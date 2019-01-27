@@ -105,6 +105,8 @@ public class TagsLegend extends AbstractItem<TagsLegend, TagsLegend.MyViewHolder
     View view;
     @BindView(R.id.title_text_view)
     AppCompatTextView titleTextView;
+    @BindView(R.id.description_text_view)
+    AppCompatTextView descriptionTextView;
     @BindView(R.id.card_view)
     MaterialCardView cardView;
 
@@ -116,10 +118,15 @@ public class TagsLegend extends AbstractItem<TagsLegend, TagsLegend.MyViewHolder
 
     @Override
     public void bindView(@NonNull TagsLegend item, @NonNull List<Object> payloads) {
-      titleTextView.setText(String.format("%s \n %s", item.getTitle(), item.getPersianName()));
+      titleTextView.setText(String.format("%s", item.getPersianName()));
       cardView.setCardBackgroundColor(Color.parseColor(item.getColor()));
+      descriptionTextView.setText(item.getDescription());
       if (item.getTitle().equals("O")) {
         titleTextView.setTextColor(Color.BLACK);
+        descriptionTextView.setTextColor(Color.BLACK);
+      } else {
+        titleTextView.setTextColor(Color.WHITE);
+        descriptionTextView.setTextColor(Color.WHITE);
       }
     }
 
