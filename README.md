@@ -3,6 +3,7 @@
 # فارسی‌یار
 
 [![Build Status](https://travis-ci.org/Text-Mining/android-app.svg?branch=master)](https://travis-ci.org/Text-Mining/android-app)
+[![Download](https://img.shields.io/badge/download-cafebazaar-green.svg)](https://cafebazaar.ir/app/ir.textmining.app/?l=fa)
 
 اپلیکیشن اندروید: برنامه برچسب‌زنی پیکره‌های پردازش متن
 
