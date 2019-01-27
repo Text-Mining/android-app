@@ -15,11 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.blankj.utilcode.util.SnackbarUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.objectbox.Box;
 import ir.textmining.app.R;
 import ir.textmining.app.model.AuthInfo;
 import ir.textmining.app.model.NerStandardTagsItem;
 import ir.textmining.app.model.NerStandardTagsItem_;
+import ir.textmining.app.model.TagsLegend;
 
 public class AppUtil {
 
@@ -82,5 +86,20 @@ public class AppUtil {
             .show();
       }
     }, 100);
+  }
+
+  public static List<TagsLegend> convertToTagsLegend(List<NerStandardTagsItem> tagsItems) {
+    List<TagsLegend> tagsLegends = new ArrayList<>();
+    for (NerStandardTagsItem item : tagsItems) {
+      TagsLegend tagsLegend = new TagsLegend();
+      tagsLegend.setColor(item.getColor());
+      tagsLegend.setDescription(item.getDescription());
+      tagsLegend.setId(item.getId());
+      tagsLegend.setPersianName(item.getPersianName());
+      tagsLegend.setShortcut(item.getShortcut());
+      tagsLegend.setTitle(item.getTitle());
+      tagsLegends.add(tagsLegend);
+    }
+    return tagsLegends;
   }
 }

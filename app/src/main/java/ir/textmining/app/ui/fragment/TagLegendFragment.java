@@ -27,6 +27,8 @@ import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import ir.textmining.app.R;
 import ir.textmining.app.model.NerStandardTagsItem;
+import ir.textmining.app.model.TagsLegend;
+import ir.textmining.app.util.AppUtil;
 import ir.textmining.app.util.MyApplication;
 
 public class TagLegendFragment extends DialogFragment {
@@ -35,8 +37,8 @@ public class TagLegendFragment extends DialogFragment {
   @BindView(R.id.recyclerView)
   RecyclerView recyclerView;
   private Box<NerStandardTagsItem> tagsItemBox;
-  private FastAdapter<NerStandardTagsItem> mFastAdapter;
-  private ItemAdapter<NerStandardTagsItem> mItemAdapter;
+  private FastAdapter<TagsLegend> mFastAdapter;
+  private ItemAdapter<TagsLegend> mItemAdapter;
 
 
   @Override
@@ -68,7 +70,7 @@ public class TagLegendFragment extends DialogFragment {
   private void handleTagItems() {
     List<NerStandardTagsItem> tagsItems = tagsItemBox.getAll();
     mItemAdapter.clear();
-    mItemAdapter.add(tagsItems);
+    mItemAdapter.add(AppUtil.convertToTagsLegend(tagsItems));
   }
 
   @NonNull
