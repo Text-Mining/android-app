@@ -40,6 +40,7 @@ import ir.textmining.app.service.APIService;
 import ir.textmining.app.ui.fragment.AboutFragment;
 import ir.textmining.app.ui.fragment.SelectTagFragment;
 import ir.textmining.app.ui.fragment.SettingsFragment;
+import ir.textmining.app.ui.fragment.TagLegendFragment;
 import ir.textmining.app.util.AppUtil;
 import ir.textmining.app.util.Constant;
 import ir.textmining.app.util.MyApplication;
@@ -234,6 +235,11 @@ public class MainActivity extends BaseActivity {
   @OnClick(R.id.next_sentence_button)
   public void nextSentence() {
     getSentence();
+  }
+
+  @OnClick(R.id.legend_button)
+  public void showLegend() {
+    AppUtil.showFragment(new TagLegendFragment(), getSupportFragmentManager());
   }
 
   private void showSkeleton() {
