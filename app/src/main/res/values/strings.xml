@@ -5,7 +5,7 @@
     <string name="password_label">Password</string>
     <string name="new_user_label">New user?</string>
     <string name="sign_up_label">Sign Up</string>
-    <string name="sentence_label">Sentence:</string>
+    <string name="sentence_label">Sentence</string>
     <string name="next_sentence_label">Next Sentence</string>
     <string name="select_word_tag_label">Select word tag</string>
     <string name="settings_label">Settings</string>
@@ -33,4 +33,6 @@
     <string name="duplicate_email_message">This email is duplicate</string>
     <string name="sign_out_layout">Sign Out</string>
     <string name="token_invalid_message">Token is invalid. please contact administrator</string>
+    <string name="tag_legend_label">Tags Legend</string>
+    <string name="legend_label">Legend</string>
 </resources>

@@ -5,7 +5,7 @@
     <string name="password_label">رمزعبور</string>
     <string name="new_user_label">کاربر جدید؟</string>
     <string name="sign_up_label">ثبت‌نام</string>
-    <string name="sentence_label">جمله:</string>
+    <string name="sentence_label">جمله</string>
     <string name="next_sentence_label">جمله بعدی</string>
     <string name="select_word_tag_label">انتخاب برچسب</string>
     <string name="settings_label">تنظیمات</string>
@@ -32,4 +32,6 @@
     <string name="duplicate_email_message">ایمیل وارد شده قبلا ثبت‌نام کرده است</string>
     <string name="sign_out_layout">خروج از حساب‌کاربری</string>
     <string name="token_invalid_message">توکن نامعتبر است. لطفا این خطا را به ما اطلاع دهید</string>
+    <string name="tag_legend_label">راهنمای تگ‌ها</string>
+    <string name="legend_label">راهنما</string>
 </resources>

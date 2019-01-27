@@ -17,14 +17,6 @@
         android:orientation="horizontal"
         android:padding="@dimen/spacing_large">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/sentence_label"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:textStyle="bold|italic" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/next_sentence_button"
             style="@style/Widget.MaterialComponents.Button"
@@ -36,6 +28,21 @@
             app:cornerRadius="6dp"
             app:icon="@drawable/ic_navigate_next_black_24dp"
             app:iconTint="@android:color/white" />
+
+        <View
+            android:layout_width="@dimen/spacing_large"
+            android:layout_height="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/legend_button"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layoutDirection="locale"
+            android:text="@string/legend_label"
+            android:textAllCaps="false"
+            app:cornerRadius="6dp"
+            app:icon="@drawable/ic_info_outline_black_24dp" />
     </LinearLayout>
 
     <View
@@ -44,6 +51,15 @@
         android:layout_marginStart="@dimen/spacing_xlarge"
         android:layout_marginEnd="@dimen/spacing_xlarge"
         android:background="@color/grey_10" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_large"
+        android:text="@string/sentence_label"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textStyle="bold|italic" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
