@@ -59,7 +59,7 @@ public class TagLegendFragment extends DialogFragment {
   }
 
   private void setUpRecyclerView() {
-    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setItemAnimator(new DefaultItemAnimator());
     mItemAdapter = new ItemAdapter<>();
