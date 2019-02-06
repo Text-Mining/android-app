@@ -11,7 +11,7 @@
 </div>
 
 **نیاز‌مندی‌ها**
-- Android Studio 3.4 Canary 10
+- Android Studio 3.3.0
 - JDK 8
 - Android SDK Build tools 28.0.3
 - Supports API Level +17
