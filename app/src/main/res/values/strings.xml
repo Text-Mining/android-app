@@ -35,5 +35,4 @@
     <string name="token_invalid_message">Token is invalid. please contact administrator</string>
     <string name="tag_legend_label">Tags Legend</string>
     <string name="legend_label">Legend</string>
-    <string name="dark_theme">Night Mode</string>
 </resources>
