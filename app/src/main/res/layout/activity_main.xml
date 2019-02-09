@@ -19,7 +19,6 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
         app:elevation="6dp"
-        app:backgroundTint="?attr/colorPrimary"
         app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -33,7 +32,6 @@
     <FrameLayout
         android:id="@+id/bottom_drawer"
         android:layout_width="match_parent"
-        android:background="@color/colorPrimaryDark"
         android:layout_height="wrap_content"
         android:elevation="16dp"
         app:behavior_hideable="true"

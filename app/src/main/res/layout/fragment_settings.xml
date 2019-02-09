@@ -88,32 +88,6 @@
                                 android:paddingLeft="@dimen/spacing_medium"
                                 android:paddingRight="@dimen/spacing_medium">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/spacing_medium"
-                                    android:layout_marginEnd="@dimen/spacing_medium"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight=".9"
-                                        android:text="@string/dark_theme"
-                                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                                        android:textStyle="bold" />
-
-                                    <androidx.appcompat.widget.SwitchCompat
-                                        android:id="@+id/dark_theme_switch"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content" />
-
-                                </LinearLayout>
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="@dimen/spacing_xlarge" />
-
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/email_text_view"
                                     android:layout_width="wrap_content"
