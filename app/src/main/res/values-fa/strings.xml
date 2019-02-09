@@ -34,4 +34,5 @@
     <string name="token_invalid_message">توکن نامعتبر است. لطفا این خطا را به ما اطلاع دهید</string>
     <string name="tag_legend_label">راهنمای تگ‌ها</string>
     <string name="legend_label">راهنما</string>
+    <string name="dark_theme">حالت شب</string>
 </resources>

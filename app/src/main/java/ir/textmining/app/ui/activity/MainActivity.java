@@ -246,7 +246,7 @@ public class MainActivity extends BaseActivity {
     skeletonScreen = Skeleton.bind(chipGroup)
         .shimmer(true)
         .angle(0)
-        .color(R.color.grey_20)
+        .color(R.color.shimmer_color)
         .load(R.layout.item_skeleton)
         .show();
   }

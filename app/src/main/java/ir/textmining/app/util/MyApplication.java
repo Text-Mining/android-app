@@ -2,8 +2,13 @@ package ir.textmining.app.util;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.preference.PreferenceManager;
 
+import com.github.pwittchen.prefser.library.rx2.Prefser;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.viewpump.ViewPump;
@@ -16,10 +21,12 @@ import ir.textmining.app.model.MyObjectBox;
 public class MyApplication extends Application {
   public static LocaleManager localeManager;
   private static BoxStore boxStore;
+  private Prefser prefser;
 
   public static BoxStore getBoxStore() {
     return boxStore;
   }
+
 
   @Override
   public void onCreate() {
@@ -32,6 +39,11 @@ public class MyApplication extends Application {
                 .build()))
         .build());
     createBoxStore();
+
+    if(SettingsManager.getInstance(this).isDarkThemeEnabled())
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    else
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
   }
 
   private void createBoxStore() {
