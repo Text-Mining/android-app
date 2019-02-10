@@ -65,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/spacing_middle"
-        android:background="@color/grey_10"
+        android:background="@color/background"
         android:padding="@dimen/spacing_middle">
 
         <com.google.android.material.chip.ChipGroup
