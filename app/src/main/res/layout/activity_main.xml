@@ -19,6 +19,7 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
         app:elevation="6dp"
+        app:backgroundTint="?attr/colorPrimary"
         app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -34,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="16dp"
+        android:background="@color/colorPrimaryDark"
         app:behavior_hideable="true"
         app:layout_behavior="@string/bottom_sheet_behavior">
 

@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.SnackbarUtils;
 import com.ethanhua.skeleton.Skeleton;
@@ -24,6 +21,8 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,7 +48,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements SettingsEventListener {
 
   @BindView(R.id.chip_group)
   ChipGroup chipGroup;
@@ -119,12 +118,6 @@ public class MainActivity extends BaseActivity {
 
   private void showSettingsFragment() {
     SettingsFragment settingsFragment = new SettingsFragment();
-    settingsFragment.setListener(new SettingsEventListener() {
-      @Override
-      public void signOut() {
-        tokenInvalid();
-      }
-    });
     AppUtil.showFragment(settingsFragment, getSupportFragmentManager());
   }
 
@@ -246,8 +239,13 @@ public class MainActivity extends BaseActivity {
     skeletonScreen = Skeleton.bind(chipGroup)
         .shimmer(true)
         .angle(0)
-        .color(R.color.grey_20)
+        .color(R.color.shimmer_color)
         .load(R.layout.item_skeleton)
         .show();
+  }
+
+  @Override
+  public void signOut() {
+    tokenInvalid();
   }
 }
