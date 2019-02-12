@@ -51,4 +51,5 @@
 -dontwarn com.crashlytics.**
 
 -keep class ir.textmining.app.model.** { *; }
+-keep class ir.textmining.app.service.** { *; }
 
