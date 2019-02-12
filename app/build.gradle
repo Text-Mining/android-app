@@ -65,17 +65,17 @@ dependencies {
     implementation 'com.github.ybq:Android-SpinKit:1.1.0'
 
     implementation 'io.github.inflationx:viewpump:1.0.0'
-    implementation 'io.github.inflationx:calligraphy3:3.0.0'
+    implementation 'io.github.inflationx:calligraphy3:3.1.0'
 
     implementation 'com.mikepenz:fastadapter:3.3.1'
 
     implementation 'com.ethanhua:skeleton:1.1.2'
     implementation 'io.supercharge:shimmerlayout:2.1.0'
 
-    implementation 'com.blankj:utilcode:1.22.10'
+    implementation 'com.blankj:utilcode:1.23.4'
 
-    implementation 'com.google.firebase:firebase-core:16.0.6'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
 
     implementation 'com.auth0.android:jwtdecode:1.2.0'
