@@ -135,14 +135,14 @@ public class SelectTagFragment extends DialogFragment {
 
   private void returnResult(NerStandardTagsItem item) {
     if (listener != null) {
-      listener.tagSuccess(item.getTitle());
+      listener.tagSuccessEvent(item.getTitle());
       close();
     }
   }
 
   private void tokenInvalid() {
     if (listener != null) {
-      listener.tokenInvalid();
+      listener.tokenInvalidEvent();
     }
   }
 

@@ -1,7 +1,7 @@
 package ir.textmining.app.listener;
 
 public interface SelectTagEventListener {
-  void tagSuccess(String tagTitle);
+  void tagSuccessEvent(String tagTitle);
 
-  void tokenInvalid();
+  void tokenInvalidEvent();
 }
