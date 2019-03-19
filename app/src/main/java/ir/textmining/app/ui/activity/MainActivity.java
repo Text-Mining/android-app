@@ -104,6 +104,8 @@ public class MainActivity extends BaseActivity implements SettingsEventListener 
                     showAboutFragment();
                 } else if (menuItem.getItemId() == R.id.settings_item) {
                     showSettingsFragment();
+                } else if (menuItem.getItemId() == R.id.app_intro_item) {
+                    startActivity(new Intent(MainActivity.this, AppIntroActivity.class));
                 }
                 hideBottomDrawer();
                 return false;

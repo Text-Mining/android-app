@@ -35,4 +35,5 @@
     <string name="tag_legend_label">راهنمای تگ‌ها</string>
     <string name="legend_label">راهنما</string>
     <string name="dark_theme">حالت شب</string>
+    <string name="app_intro_label">روند تگ‌گذاری</string>
 </resources>

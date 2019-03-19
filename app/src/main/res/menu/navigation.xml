@@ -6,6 +6,10 @@
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="@string/settings_label" />
     <item
+        android:id="@+id/app_intro_item"
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        android:title="@string/app_intro_label" />
+    <item
         android:id="@+id/about_item"
         android:icon="@drawable/ic_info_outline_black_24dp"
         android:title="@string/about_label" />
