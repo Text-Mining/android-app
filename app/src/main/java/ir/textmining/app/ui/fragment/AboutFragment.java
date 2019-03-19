@@ -13,12 +13,11 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.SnackbarUtils;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.DialogFragment;
-
-import com.blankj.utilcode.util.SnackbarUtils;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -76,7 +75,7 @@ public class AboutFragment extends DialogFragment {
     }
   }
 
-  @OnClick({R.id.source_code_layout, R.id.website_layout, R.id.developer_layout})
+  @OnClick({R.id.source_code_layout, R.id.website_layout, R.id.developer_layout, R.id.designer_layout})
   void handleLayoutClick(View view) {
     switch (view.getId()) {
       case R.id.source_code_layout:
@@ -87,6 +86,8 @@ public class AboutFragment extends DialogFragment {
         break;
       case R.id.developer_layout:
         startBrowser(Constant.DEVELOPER_URL, view);
+      case R.id.designer_layout:
+        startBrowser(Constant.DESIGNER_URL, view);
         break;
     }
   }
