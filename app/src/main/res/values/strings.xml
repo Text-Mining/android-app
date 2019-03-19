@@ -37,4 +37,7 @@
     <string name="legend_label">Legend</string>
     <string name="dark_theme">Night Mode</string>
     <string name="app_intro_label">App Intro</string>
+    <string name="designer_label">Designer</string>
+    <string name="designer_name_label">Masoud Mirzamani</string>
+    <string name="designer_twitter_label" translatable="false">\@mirMasoud_</string>
 </resources>

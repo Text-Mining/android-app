@@ -36,4 +36,6 @@
     <string name="legend_label">راهنما</string>
     <string name="dark_theme">حالت شب</string>
     <string name="app_intro_label">روند تگ‌گذاری</string>
+    <string name="designer_label">طراح</string>
+    <string name="designer_name_label">مسعود میرزمانی</string>
 </resources>
