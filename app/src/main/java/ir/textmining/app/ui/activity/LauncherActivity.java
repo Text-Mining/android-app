@@ -9,9 +9,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
-
 import com.auth0.android.jwt.JWT;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.SnackbarUtils;
@@ -20,6 +17,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -250,8 +249,13 @@ public class LauncherActivity extends BaseActivity {
   }
 
   private void startMainActivity() {
-    startActivity(new Intent(this, MainActivity.class));
-    finish();
+    if (prefser.get(Constant.APP_INTRO, Boolean.class, false)) {
+      startActivity(new Intent(this, MainActivity.class));
+      finish();
+    } else {
+      startActivity(new Intent(this, AppIntroActivity.class));
+      finish();
+    }
   }
 
   private void signUp(View view) {
