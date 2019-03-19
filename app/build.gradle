@@ -80,6 +80,8 @@ dependencies {
 
     implementation 'com.auth0.android:jwtdecode:1.2.0'
 
+    implementation 'com.github.AppIntro:AppIntro:5.1.0'
+
     //ButterKnife
     implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
