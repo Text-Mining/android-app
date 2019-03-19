@@ -28,6 +28,7 @@
         <activity
             android:name=".ui.activity.BaseActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.AppIntroActivity" />
     </application>
 
 </manifest>
